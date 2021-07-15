@@ -17,24 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf6-oZ-j4z">
-                                <rect key="frame" x="47" y="176" width="133" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf6-oZ-j4z">
+                                <rect key="frame" x="47" y="176" width="132.5" height="37.5"/>
                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="30"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kww-ZH-0Ny">
-                                <rect key="frame" x="47" y="348" width="324" height="34"/>
+                                <rect key="frame" x="47" y="347" width="324" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TGF-Z2-DSy">
-                                <rect key="frame" x="47" y="410" width="324" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TGF-Z2-DSy">
+                                <rect key="frame" x="47" y="409" width="324" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5V-pl-BGd">
-                                <rect key="frame" x="47" y="497" width="324" height="35"/>
+                                <rect key="frame" x="47" y="496" width="324" height="35"/>
                                 <color key="backgroundColor" red="0.73333333333333328" green="0.85882352941176465" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Uux-8J-4lf"/>
@@ -46,20 +46,20 @@
                                     <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tEE-bu-xD3"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to continue!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f4-sH-4gc">
-                                <rect key="frame" x="47" y="222" width="199" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to continue!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f4-sH-4gc">
+                                <rect key="frame" x="47" y="221.5" width="198.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="22"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6H-PU-C3n">
-                                <rect key="frame" x="47" y="745" width="95" height="25"/>
+                                <rect key="frame" x="47" y="744" width="95" height="25"/>
                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="20"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zf3-NO-rQM">
-                                <rect key="frame" x="47" y="781" width="324" height="30"/>
+                                <rect key="frame" x="47" y="780" width="324" height="30"/>
                                 <color key="backgroundColor" red="0.73333333329999995" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="  Sign Up  ">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,16 +82,12 @@
                             <constraint firstItem="tf6-oZ-j4z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="88" id="KSo-3V-dY3"/>
                             <constraint firstItem="n5V-pl-BGd" firstAttribute="top" secondItem="TGF-Z2-DSy" secondAttribute="bottom" constant="53" id="O18-8i-5Yr"/>
                             <constraint firstItem="Zf3-NO-rQM" firstAttribute="top" secondItem="V6H-PU-C3n" secondAttribute="bottom" constant="11" id="OQ7-4Z-61N"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4f4-sH-4gc" secondAttribute="trailing" constant="168" id="R0E-l5-68X"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Zf3-NO-rQM" secondAttribute="bottom" constant="51" id="RgM-oW-e3W"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V6H-PU-C3n" secondAttribute="trailing" constant="272" id="Y0z-vF-Vwk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zf3-NO-rQM" secondAttribute="trailing" constant="43" id="cqN-0J-zwY"/>
                             <constraint firstItem="V6H-PU-C3n" firstAttribute="top" secondItem="n5V-pl-BGd" secondAttribute="bottom" constant="213" id="gNz-k3-ZwM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n5V-pl-BGd" secondAttribute="trailing" constant="43" id="lAz-P3-oxJ"/>
                             <constraint firstItem="TGF-Z2-DSy" firstAttribute="top" secondItem="kww-ZH-0Ny" secondAttribute="bottom" constant="28" id="lMG-uQ-kmc"/>
                             <constraint firstItem="n5V-pl-BGd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="lof-FJ-m7e"/>
                             <constraint firstItem="kww-ZH-0Ny" firstAttribute="top" secondItem="4f4-sH-4gc" secondAttribute="bottom" constant="98" id="m9H-Ra-fKk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tf6-oZ-j4z" secondAttribute="trailing" constant="234" id="mpl-qI-Yjc"/>
                             <constraint firstItem="4f4-sH-4gc" firstAttribute="top" secondItem="tf6-oZ-j4z" secondAttribute="bottom" constant="8" id="pyd-bn-Acw"/>
                             <constraint firstItem="TGF-Z2-DSy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="uTY-dX-1U7"/>
                         </constraints>
