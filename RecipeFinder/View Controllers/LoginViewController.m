@@ -26,6 +26,7 @@
 }
 
 - (IBAction)loginTapped:(id)sender {
+    //If any of the fields are empty then alert the user else login
     if([self.usernameTextField.text isEqual:@""]){
         [self alert:@"Username"];
     }
@@ -48,7 +49,7 @@
         } else {
             NSLog(@"User logged in successfully");
             
-            // display view controller that needs to shown after successful login
+            // display view controller that needs to be shown after successful login
             [self performSegueWithIdentifier:@"tabBarSegue" sender:nil];
         }
     }];

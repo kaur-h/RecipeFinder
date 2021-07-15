@@ -24,7 +24,19 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)signUpTapped:(id)sender {
-    [self registerUser];
+    //If any of the fields are empty alert the user else perform registration
+    if([self.usernameTextField.text isEqual:@""]){
+        [self alert:@"Username"];
+    }
+    else if([self.passwordTextField.text isEqual:@""]){
+        [self alert:@"Password"];
+    }
+    else if([self.emailTextField.text isEqual:@""]){
+        [self alert:@"Email"];
+    }
+    else{
+        [self registerUser];
+    }
 }
 
 - (void) registerUser{
@@ -52,14 +64,28 @@
     }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) alert: (NSString *)field{
+    //Compose error message
+    NSString *message = [field stringByAppendingString:@" field is empty!"];
+    
+    //instantiate the alert
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                               message:message
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    // create an OK action
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                     }];
+    // add the OK action to the alert controller
+    [alert addAction:okAction];
+    
+    //present the alert
+    [self presentViewController:alert animated:YES completion:^{
+        // optional code for what happens after the alert controller has finished presenting
+    }];
 }
-*/
 
 @end
