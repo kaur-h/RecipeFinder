@@ -28,6 +28,7 @@
 		D6EBC4A7269E26FE0007187D /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4A6269E26FE0007187D /* FavoriteCell.m */; };
 		D6EBC4AA269F6F1C0007187D /* RecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4A9269F6F1C0007187D /* RecipeCell.m */; };
 		D6EBC4AD269F7CF80007187D /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4AC269F7CF80007187D /* RecipeDetailViewController.m */; };
+		D6EBC4B126A08F070007187D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B026A08F070007187D /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		D6EBC4A9269F6F1C0007187D /* RecipeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeCell.m; sourceTree = "<group>"; };
 		D6EBC4AB269F7CF80007187D /* RecipeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
 		D6EBC4AC269F7CF80007187D /* RecipeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
+		D6EBC4AF26A08F070007187D /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		D6EBC4B026A08F070007187D /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +212,8 @@
 				D6EBC4A3269DF9CC0007187D /* AddIngredientsViewController.m */,
 				D6EBC4AB269F7CF80007187D /* RecipeDetailViewController.h */,
 				D6EBC4AC269F7CF80007187D /* RecipeDetailViewController.m */,
+				D6EBC4AF26A08F070007187D /* RegisterViewController.h */,
+				D6EBC4B026A08F070007187D /* RegisterViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				D6EBC454269CD8250007187D /* AppDelegate.m in Sources */,
 				D6EBC4AD269F7CF80007187D /* RecipeDetailViewController.m in Sources */,
 				D6EBC465269CD8260007187D /* main.m in Sources */,
+				D6EBC4B126A08F070007187D /* RegisterViewController.m in Sources */,
 				D6EBC4A7269E26FE0007187D /* FavoriteCell.m in Sources */,
 				D6EBC457269CD8250007187D /* SceneDelegate.m in Sources */,
 			);
