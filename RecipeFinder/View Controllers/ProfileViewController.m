@@ -7,6 +7,8 @@
 
 #import "ProfileViewController.h"
 @import Parse;
+#import "LoginViewController.h"
+#import "SceneDelegate.h"
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -25,6 +27,16 @@
     self.logoutButton.layer.cornerRadius = 4;
 }
 - (IBAction)logoutTapped:(id)sender {
+    //Logging out user
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
+    
+    //Changing the view back to login screen
+    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    myDelegate.window.rootViewController = loginViewController;
 }
 
 /*

@@ -42,7 +42,6 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return  self.recipes.count;
     return  10;
 }
 
