@@ -7,6 +7,7 @@
 
 #import "RegisterViewController.h"
 #import "Parse/Parse.h"
+#import "SceneDelegate.h"
 
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -42,8 +43,11 @@
         } else {
             NSLog(@"User registered successfully");
             
-            // manually segue to logged in view
-            [self performSegueWithIdentifier:@"tabBarSegue" sender:nil];
+            //Changing the view to the tab bar
+            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UITabBarController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarScene"];
+            myDelegate.window.rootViewController = tabBarController;
         }
     }];
 }

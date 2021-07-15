@@ -613,7 +613,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="BLo-BN-uo4">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" interfaceStyle="light" id="y10-QE-Ujz" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarScene" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" interfaceStyle="light" id="y10-QE-Ujz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="7bn-Xt-JxS"/>
                     <nil key="simulatedTopBarMetrics"/>
