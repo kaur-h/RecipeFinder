@@ -26,7 +26,15 @@
 }
 
 - (IBAction)loginTapped:(id)sender {
-    [self loginUser];
+    if([self.usernameTextField.text isEqual:@""]){
+        [self alert:@"Username"];
+    }
+    else if([self.passwordTextField.text isEqual:@""]){
+        [self alert:@"Password"];
+    }
+    else{
+        [self loginUser];
+    }
 }
 
 - (void) loginUser{
@@ -43,6 +51,30 @@
             // display view controller that needs to shown after successful login
             [self performSegueWithIdentifier:@"tabBarSegue" sender:nil];
         }
+    }];
+}
+
+- (void) alert: (NSString *)field{
+    //Compose error message
+    NSString *message = [field stringByAppendingString:@" field is empty!"];
+    
+    //instantiate the alert
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                               message:message
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    // create an OK action
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                     }];
+    // add the OK action to the alert controller
+    [alert addAction:okAction];
+    
+    //present the alert
+    [self presentViewController:alert animated:YES completion:^{
+        // optional code for what happens after the alert controller has finished presenting
     }];
 }
 
