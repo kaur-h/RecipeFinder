@@ -452,6 +452,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editing:" destination="Q4V-YG-B5v" eventType="editingChanged" id="6bf-tk-0Kv"/>
+                                    <action selector="endEditing:" destination="Q4V-YG-B5v" eventType="editingDidEnd" id="HTc-aE-coG"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Beb-gj-UQi">
                                 <rect key="frame" x="195" y="243" width="199" height="34"/>

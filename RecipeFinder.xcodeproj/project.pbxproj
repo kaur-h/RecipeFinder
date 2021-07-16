@@ -30,6 +30,7 @@
 		D6EBC4AD269F7CF80007187D /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4AC269F7CF80007187D /* RecipeDetailViewController.m */; };
 		D6EBC4B126A08F070007187D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B026A08F070007187D /* RegisterViewController.m */; };
 		D6EBC4B426A1C8920007187D /* Ingredient.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B326A1C8920007187D /* Ingredient.m */; };
+		D6EBC4B826A1DA3C0007187D /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B726A1DA3C0007187D /* APIManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		D6EBC4B026A08F070007187D /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		D6EBC4B226A1C8920007187D /* Ingredient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ingredient.h; sourceTree = "<group>"; };
 		D6EBC4B326A1C8920007187D /* Ingredient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ingredient.m; sourceTree = "<group>"; };
+		D6EBC4B626A1DA3C0007187D /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		D6EBC4B726A1DA3C0007187D /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,7 @@
 		D6EBC451269CD8250007187D /* RecipeFinder */ = {
 			isa = PBXGroup;
 			children = (
+				D6EBC4B526A1DA170007187D /* API */,
 				D6EBC489269CD8B10007187D /* Models */,
 				D6EBC488269CD88D0007187D /* Views */,
 				D6EBC487269CD8620007187D /* View Controllers */,
@@ -241,6 +245,15 @@
 				D6EBC4B326A1C8920007187D /* Ingredient.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D6EBC4B526A1DA170007187D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D6EBC4B626A1DA3C0007187D /* APIManager.h */,
+				D6EBC4B726A1DA3C0007187D /* APIManager.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		E64C8A33F7CB899725672CB7 /* Pods */ = {
@@ -505,6 +518,7 @@
 				D6EBC4AD269F7CF80007187D /* RecipeDetailViewController.m in Sources */,
 				D6EBC465269CD8260007187D /* main.m in Sources */,
 				D6EBC4B126A08F070007187D /* RegisterViewController.m in Sources */,
+				D6EBC4B826A1DA3C0007187D /* APIManager.m in Sources */,
 				D6EBC4A7269E26FE0007187D /* FavoriteCell.m in Sources */,
 				D6EBC4B426A1C8920007187D /* Ingredient.m in Sources */,
 				D6EBC457269CD8250007187D /* SceneDelegate.m in Sources */,
