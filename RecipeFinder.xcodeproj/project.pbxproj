@@ -29,6 +29,7 @@
 		D6EBC4AA269F6F1C0007187D /* RecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4A9269F6F1C0007187D /* RecipeCell.m */; };
 		D6EBC4AD269F7CF80007187D /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4AC269F7CF80007187D /* RecipeDetailViewController.m */; };
 		D6EBC4B126A08F070007187D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B026A08F070007187D /* RegisterViewController.m */; };
+		D6EBC4B426A1C8920007187D /* Ingredient.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B326A1C8920007187D /* Ingredient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		D6EBC4AC269F7CF80007187D /* RecipeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
 		D6EBC4AF26A08F070007187D /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		D6EBC4B026A08F070007187D /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		D6EBC4B226A1C8920007187D /* Ingredient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ingredient.h; sourceTree = "<group>"; };
+		D6EBC4B326A1C8920007187D /* Ingredient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ingredient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +237,8 @@
 		D6EBC489269CD8B10007187D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D6EBC4B226A1C8920007187D /* Ingredient.h */,
+				D6EBC4B326A1C8920007187D /* Ingredient.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -501,6 +506,7 @@
 				D6EBC465269CD8260007187D /* main.m in Sources */,
 				D6EBC4B126A08F070007187D /* RegisterViewController.m in Sources */,
 				D6EBC4A7269E26FE0007187D /* FavoriteCell.m in Sources */,
+				D6EBC4B426A1C8920007187D /* Ingredient.m in Sources */,
 				D6EBC457269CD8250007187D /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
