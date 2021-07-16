@@ -14,10 +14,21 @@
             filePath = "RecipeFinder/View Controllers/AddIngredientsViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+            startingLineNumber = "53"
+            endingLineNumber = "53">
+=======
+>>>>>>> Stashed changes
             startingLineNumber = "52"
             endingLineNumber = "52"
             landmarkName = "-editingIngredientName:"
             landmarkType = "7">
+<<<<<<< Updated upstream
+=======
+>>>>>>> 4bb776a70622a92f71178b709f7107de67df73ef
+>>>>>>> Stashed changes
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
