@@ -32,6 +32,7 @@
 		D6EBC4B426A1C8920007187D /* Ingredient.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B326A1C8920007187D /* Ingredient.m */; };
 		D6EBC4B826A1DA3C0007187D /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B726A1DA3C0007187D /* APIManager.m */; };
 		D6FF060326A22FF700A9D5CA /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6FF060226A22FF700A9D5CA /* Keys.plist */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		D6EBC4B626A1DA3C0007187D /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		D6EBC4B726A1DA3C0007187D /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		D6FF060226A22FF700A9D5CA /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = ../../../Documents/Keys.plist; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				D6EBC463269CD8260007187D /* Info.plist */,
 				D6FF060226A22FF700A9D5CA /* Keys.plist */,
 				D6EBC464269CD8260007187D /* main.m */,
+				D6EBC4BD26A219B90007187D /* Keys.plist */,
 			);
 			path = RecipeFinder;
 			sourceTree = "<group>";
