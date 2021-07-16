@@ -30,16 +30,9 @@
 		D6EBC4AD269F7CF80007187D /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4AC269F7CF80007187D /* RecipeDetailViewController.m */; };
 		D6EBC4B126A08F070007187D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B026A08F070007187D /* RegisterViewController.m */; };
 		D6EBC4B426A1C8920007187D /* Ingredient.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B326A1C8920007187D /* Ingredient.m */; };
-<<<<<<< Updated upstream
+
 		D6EBC4B826A1DA3C0007187D /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B726A1DA3C0007187D /* APIManager.m */; };
-=======
-<<<<<<< HEAD
-		D6EBC4BC26A218C40007187D /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4BB26A218C40007187D /* APIManager.m */; };
-		D6EBC4BE26A219B90007187D /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6EBC4BD26A219B90007187D /* Keys.plist */; };
-=======
-		D6EBC4B826A1DA3C0007187D /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC4B726A1DA3C0007187D /* APIManager.m */; };
->>>>>>> 4bb776a70622a92f71178b709f7107de67df73ef
->>>>>>> Stashed changes
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,19 +102,8 @@
 		D6EBC4B026A08F070007187D /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		D6EBC4B226A1C8920007187D /* Ingredient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ingredient.h; sourceTree = "<group>"; };
 		D6EBC4B326A1C8920007187D /* Ingredient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ingredient.m; sourceTree = "<group>"; };
-<<<<<<< Updated upstream
 		D6EBC4B626A1DA3C0007187D /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		D6EBC4B726A1DA3C0007187D /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
-=======
-<<<<<<< HEAD
-		D6EBC4BA26A218C40007187D /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
-		D6EBC4BB26A218C40007187D /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
-		D6EBC4BD26A219B90007187D /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
-=======
-		D6EBC4B626A1DA3C0007187D /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
-		D6EBC4B726A1DA3C0007187D /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
->>>>>>> 4bb776a70622a92f71178b709f7107de67df73ef
->>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,15 +169,7 @@
 		D6EBC451269CD8250007187D /* RecipeFinder */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< Updated upstream
 				D6EBC4B526A1DA170007187D /* API */,
-=======
-<<<<<<< HEAD
-				D6EBC4B926A218B10007187D /* API */,
-=======
-				D6EBC4B526A1DA170007187D /* API */,
->>>>>>> 4bb776a70622a92f71178b709f7107de67df73ef
->>>>>>> Stashed changes
 				D6EBC489269CD8B10007187D /* Models */,
 				D6EBC488269CD88D0007187D /* Views */,
 				D6EBC487269CD8620007187D /* View Controllers */,
@@ -276,25 +250,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-		D6EBC4B926A218B10007187D /* API */ = {
-			isa = PBXGroup;
-			children = (
-				D6EBC4BA26A218C40007187D /* APIManager.h */,
-				D6EBC4BB26A218C40007187D /* APIManager.m */,
-=======
->>>>>>> Stashed changes
 		D6EBC4B526A1DA170007187D /* API */ = {
 			isa = PBXGroup;
 			children = (
 				D6EBC4B626A1DA3C0007187D /* APIManager.h */,
 				D6EBC4B726A1DA3C0007187D /* APIManager.m */,
-<<<<<<< Updated upstream
-=======
->>>>>>> 4bb776a70622a92f71178b709f7107de67df73ef
->>>>>>> Stashed changes
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -562,15 +522,7 @@
 				D6EBC4AD269F7CF80007187D /* RecipeDetailViewController.m in Sources */,
 				D6EBC465269CD8260007187D /* main.m in Sources */,
 				D6EBC4B126A08F070007187D /* RegisterViewController.m in Sources */,
-<<<<<<< Updated upstream
 				D6EBC4B826A1DA3C0007187D /* APIManager.m in Sources */,
-=======
-<<<<<<< HEAD
-				D6EBC4BC26A218C40007187D /* APIManager.m in Sources */,
-=======
-				D6EBC4B826A1DA3C0007187D /* APIManager.m in Sources */,
->>>>>>> 4bb776a70622a92f71178b709f7107de67df73ef
->>>>>>> Stashed changes
 				D6EBC4A7269E26FE0007187D /* FavoriteCell.m in Sources */,
 				D6EBC4B426A1C8920007187D /* Ingredient.m in Sources */,
 				D6EBC457269CD8250007187D /* SceneDelegate.m in Sources */,
