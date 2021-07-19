@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *categoryTextField;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UITableView *autoCompleteTableView;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) NSArray *autocompleteResults;
 @end
 
@@ -25,6 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.addButton.layer.cornerRadius = 5;
+    self.backgroundView.layer.cornerRadius = 10;
     
     self.nameTextField.delegate = self;
     
@@ -32,9 +34,8 @@
     self.autoCompleteTableView.dataSource = self;
     self.autoCompleteTableView.scrollEnabled = YES;
     self.autoCompleteTableView.hidden = YES;
+    self.autoCompleteTableView.frame = CGRectMake(self.backgroundView.frame.origin.x + self.nameTextField.frame.origin.x, self.backgroundView.frame.origin.y + self.nameTextField.frame.origin.y + self.nameTextField.frame.size.height, 315, 175);
     [self.view addSubview:self.autoCompleteTableView];
-    
-    self.autocompleteResults = [[NSArray alloc] initWithObjects:@"Egg", @"Butter", @"Milk", nil];
     
 }
 
@@ -46,16 +47,18 @@
     }
     if (text.length > 0) {
         self.autoCompleteTableView.hidden = NO;
-//            [[APIManager shared] getAutoCompleteIngredientSearch:^(NSDictionary *ingredients, NSError *error){
-//                    if(error){
-//                        NSLog(@"Error");
-//                    }
-//                    else{
-//                        self.autocompleteResults = ingredients;
-//
-//                    }
-//                }];
-        [self.autoCompleteTableView reloadData];
+            [[APIManager shared] getAutoCompleteIngredientSearch:text completion:^(NSArray *ingredientNames, NSArray *ingredientImages, NSError *error){
+                    if(error){
+                        NSLog(@"Error");
+                    }
+                    else{
+                        
+                        self.autocompleteResults = [[NSArray alloc] initWithArray:ingredientNames];
+                        dispatch_sync(dispatch_get_main_queue(), ^{
+                            [self.autoCompleteTableView reloadData];
+                            });
+                    }
+                }];
     }
     else {
         self.autoCompleteTableView.hidden = YES;
@@ -76,7 +79,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.autocompleteResults.count;
+    return 10;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

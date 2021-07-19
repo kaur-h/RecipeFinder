@@ -25,30 +25,38 @@ static NSString * const baseURLString = @"";
     return sharedManager;
 }
 
-- (void)getAutoCompleteIngredientSearch:(void(^)(NSDictionary *ingredients, NSError *error))completion {
+- (void)getAutoCompleteIngredientSearch:(NSString *)text completion:(void(^)(NSArray *ingredientNames, NSArray *ingredientImages, NSError *error))completion {
     NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
          
     NSString *key= [dict objectForKey: @"RapidAPIKey"];
     NSDictionary *headers = @{ @"x-rapidapi-key":key,
                                @"x-rapidapi-host": @"spoonacular-recipe-food-nutrition-v1.p.rapidapi.com" };
+    
+    NSString *begginingRequest = @"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/autocomplete?query=";
+    NSString *endRequest = @"&number=10";
+    NSString *fullRequest = [[begginingRequest stringByAppendingString:text] stringByAppendingString:endRequest];
 
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/autocomplete?query=appl&number=10&intolerances=egg"]
-                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                   timeoutInterval:10.0];
-[request setHTTPMethod:@"GET"];
-[request setAllHTTPHeaderFields:headers];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:fullRequest] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
+    
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:headers];
 
 NSURLSession *session = [NSURLSession sharedSession];
 NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                 if (error) {
                                                     NSLog(@"%@", error);
+                                                    completion(nil, nil, error);
                                                 } else {
-                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-//                                                    NSLog(@"%@", httpResponse);
                                                     NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                                                    NSLog(@"%@", dataDictionary);
+                                                    NSMutableArray *nameArray = [[NSMutableArray alloc] init];
+                                                    NSMutableArray *imageArray = [[NSMutableArray alloc] init];
+                                                    for(NSDictionary *innerDictionary in dataDictionary){
+                                                        [nameArray addObject:innerDictionary[@"name"]];
+                                                        [imageArray addObject:innerDictionary[@"image"]];
+                                                    }
+                                                    completion(nameArray,imageArray, nil);
                                                 }
                                             }];
 [dataTask resume];

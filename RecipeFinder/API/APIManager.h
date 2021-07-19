@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface APIManager : NSObject
 + (instancetype)shared;
 
-- (void)getAutoCompleteIngredientSearch:(void(^)(NSDictionary *ingredients, NSError *error))completion;
+- (void)getAutoCompleteIngredientSearch:(NSString *)text completion:(void(^)(NSArray *ingredientNames, NSArray *ingredientImages, NSError *error))completion;
 @end
 
 NS_ASSUME_NONNULL_END
