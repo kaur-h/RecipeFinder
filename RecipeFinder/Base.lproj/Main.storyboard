@@ -447,16 +447,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.92941176469999998" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LmC-79-8ZV">
-                                <rect key="frame" x="195" y="137" width="199" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="editing:" destination="Q4V-YG-B5v" eventType="editingChanged" id="6bf-tk-0Kv"/>
-                                    <action selector="endEditing:" destination="Q4V-YG-B5v" eventType="editingDidEnd" id="HTc-aE-coG"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Beb-gj-UQi">
                                 <rect key="frame" x="195" y="243" width="199" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -480,6 +470,16 @@
                                     <action selector="addTapped:" destination="Q4V-YG-B5v" eventType="touchUpInside" id="SAH-lP-DSt"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LmC-79-8ZV">
+                                <rect key="frame" x="195" y="139" width="199" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="endEditingIngredientName:" destination="Q4V-YG-B5v" eventType="editingDidEnd" id="7xj-GR-Rqv"/>
+                                    <action selector="startEditingIngredientName:" destination="Q4V-YG-B5v" eventType="editingDidBegin" id="5Lp-Qv-Aci"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lgi-qw-BIc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

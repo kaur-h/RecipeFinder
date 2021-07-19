@@ -41,8 +41,7 @@
     NSLog(@"Editing End");
 }
 
-
-- (IBAction)editingIngredientName:(id)sender {
+- (IBAction)startEditingIngredientName:(id)sender {
     NSLog(@"ingredient name changed");
     [[APIManager shared] getAutoCompleteIngredientSearch:^(NSDictionary *ingredients, NSError *error){
             if(error){
