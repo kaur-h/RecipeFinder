@@ -69,7 +69,19 @@
 
 
 - (IBAction)addTapped:(id)sender {
-    [self dismissViewControllerAnimated:true completion:nil];
+    
+    NSString *name = self.nameTextField.text;
+    NSNumber *quantity = [NSNumber numberWithInt:[self.quantityTextField.text intValue]];
+    
+    [Ingredient postIngredient:Nil withName:name withQuantity:quantity withCompletion:^(BOOL completed, NSError *error){
+        if(completed){
+            NSLog(@"Successfully posted ingredient!");
+            [self dismissViewControllerAnimated:true completion:nil];
+        }
+        else{
+            NSLog(@"Error posting ingredient: %@", error.localizedDescription);
+        }
+    }];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

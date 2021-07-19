@@ -28,6 +28,8 @@
     newIngredient.name = name;
     newIngredient.image = [self getPFFileFromImage:image];
     newIngredient.quantity = quantity;
+    
+    [newIngredient saveInBackgroundWithBlock: completion];
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
