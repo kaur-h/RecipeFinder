@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) NSNumber *quantity;
 @property (nonatomic, strong) NSString *createdAtString;
+@property (nonatomic, strong) PFUser *user;
 
 + (void) postIngredient: ( UIImage * _Nullable )image withName: ( NSString * _Nullable )name withQuantity: (NSNumber *) quantity withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

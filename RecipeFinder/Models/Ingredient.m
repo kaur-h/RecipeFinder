@@ -16,6 +16,7 @@
 @dynamic image;
 @dynamic quantity;
 @dynamic createdAtString;
+@dynamic user;
 
 
 + (nonnull NSString *)parseClassName {
@@ -28,6 +29,7 @@
     newIngredient.name = name;
     newIngredient.image = [self getPFFileFromImage:image];
     newIngredient.quantity = quantity;
+    newIngredient.user = [PFUser currentUser];
     
     [newIngredient saveInBackgroundWithBlock: completion];
 }

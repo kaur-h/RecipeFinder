@@ -6,6 +6,7 @@
 //
 
 #import "IngredientCell.h"
+#import "Ingredient.h"
 
 @implementation IngredientCell
 
@@ -18,6 +19,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setIngredient:(Ingredient *)ingredient {
+    _ingredient = ingredient;
+    self.ingredientName.text = ingredient[@"name"];
+    self.ingredientQuantity.text = [NSString stringWithFormat: @"%@", ingredient[@"quantity"]];
+    
 }
 
 @end

@@ -6,15 +6,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Ingredient.h"
 @import Parse;
  
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IngredientCell : UITableViewCell
+@property (strong, nonatomic) Ingredient *ingredient;
 @property (weak, nonatomic) IBOutlet PFImageView *ingredientImage;
 @property (weak, nonatomic) IBOutlet UILabel *ingredientName;
 @property (weak, nonatomic) IBOutlet UILabel *ingredientQuantity;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+
+- (void)setIngredient:(Ingredient *)ingredient;
 
 @end
 
