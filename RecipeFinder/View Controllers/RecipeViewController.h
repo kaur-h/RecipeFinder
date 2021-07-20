@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RecipeViewController : UIViewController
-
+@property (strong, nonatomic) NSArray *userIngredients;
 @end
 
 NS_ASSUME_NONNULL_END

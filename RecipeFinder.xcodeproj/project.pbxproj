@@ -10,6 +10,7 @@
 		01C470D82D56736E769458A0 /* Pods_RecipeFinder_RecipeFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B573BFF3AD15FD11FB65511 /* Pods_RecipeFinder_RecipeFinderUITests.framework */; };
 		40C5D1A634BDDC09E5907698 /* Pods_RecipeFinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FED707D5CCC60416458B793 /* Pods_RecipeFinderTests.framework */; };
 		949AD746E56EE30785FD2A85 /* Pods_RecipeFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039643394EB99B4393E23CEE /* Pods_RecipeFinder.framework */; };
+		D67158E526A76D01001AF551 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = D67158E426A76D01001AF551 /* Recipe.m */; };
 		D6EBC454269CD8250007187D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC453269CD8250007187D /* AppDelegate.m */; };
 		D6EBC457269CD8250007187D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC456269CD8250007187D /* SceneDelegate.m */; };
 		D6EBC45D269CD8250007187D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EBC45B269CD8250007187D /* Main.storyboard */; };
@@ -61,6 +62,8 @@
 		9FE10C3D47C08F791466522E /* Pods-RecipeFinder-RecipeFinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeFinder-RecipeFinderUITests.release.xcconfig"; path = "Target Support Files/Pods-RecipeFinder-RecipeFinderUITests/Pods-RecipeFinder-RecipeFinderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BD9B5320D92A0B47157FA145 /* Pods-RecipeFinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeFinderTests.release.xcconfig"; path = "Target Support Files/Pods-RecipeFinderTests/Pods-RecipeFinderTests.release.xcconfig"; sourceTree = "<group>"; };
 		D06154D0D575E8567C763987 /* Pods-RecipeFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeFinder.debug.xcconfig"; path = "Target Support Files/Pods-RecipeFinder/Pods-RecipeFinder.debug.xcconfig"; sourceTree = "<group>"; };
+		D67158E326A76D01001AF551 /* Recipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
+		D67158E426A76D01001AF551 /* Recipe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
 		D6EBC44F269CD8250007187D /* RecipeFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EBC452269CD8250007187D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D6EBC453269CD8250007187D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 			children = (
 				D6EBC4B226A1C8920007187D /* Ingredient.h */,
 				D6EBC4B326A1C8920007187D /* Ingredient.m */,
+				D67158E326A76D01001AF551 /* Recipe.h */,
+				D67158E426A76D01001AF551 /* Recipe.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				D6EBC4A1269DD3050007187D /* FavoritesViewController.m in Sources */,
 				D6EBC454269CD8250007187D /* AppDelegate.m in Sources */,
 				D6EBC4AD269F7CF80007187D /* RecipeDetailViewController.m in Sources */,
+				D67158E526A76D01001AF551 /* Recipe.m in Sources */,
 				D6EBC465269CD8260007187D /* main.m in Sources */,
 				D6EBC4B126A08F070007187D /* RegisterViewController.m in Sources */,
 				D6EBC4B826A1DA3C0007187D /* APIManager.m in Sources */,

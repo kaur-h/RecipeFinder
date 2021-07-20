@@ -9,6 +9,7 @@
 #import "IngredientCell.h"
 #import "Ingredient.h"
 #import "Parse/Parse.h"
+#import "RecipeViewController.h"
 
 @interface IngredientsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UISearchBar *ingredientSearchBar;
@@ -80,6 +81,10 @@
 }
 
 - (IBAction)viewRecipesTapped:(id)sender {
+    UINavigationController *navController = self.tabBarController.viewControllers[1];
+    RecipeViewController *recipeController = navController.viewControllers[0];
+    recipeController.userIngredients = self.arrayOfIngredients;
+    [self.tabBarController setSelectedIndex:1];
 }
 
 @end

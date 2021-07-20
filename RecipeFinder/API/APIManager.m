@@ -42,8 +42,8 @@ static NSString * const baseURLString = @"";
     [request setHTTPMethod:@"GET"];
     [request setAllHTTPHeaderFields:headers];
 
-NSURLSession *session = [NSURLSession sharedSession];
-NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                 if (error) {
                                                     NSLog(@"%@", error);
@@ -60,6 +60,41 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                 }
                                             }];
 [dataTask resume];
+}
+
+
+-(void) getRecipesBasedOnIngredients:(NSString *)ingredients completion:(void(^) (NSDictionary *recipes, NSError *error))completion{
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+         
+    NSString *key= [dict objectForKey: @"RapidAPIKey"];
+    NSDictionary *headers = @{ @"x-rapidapi-key": key,
+                           @"x-rapidapi-host": @"spoonacular-recipe-food-nutrition-v1.p.rapidapi.com" };
+    
+    NSString *begginingRequest = @"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=";
+    NSString *endRequest = @"&ignorePantry=true&ranking=2";
+    NSString *fullRequest = [[begginingRequest stringByAppendingString:ingredients] stringByAppendingString:endRequest];
+    
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:fullRequest]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:headers];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                    completion(nil, error);
+                                                } else {
+                                                    NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                                                    completion(dataDictionary, nil);
+                                                }
+                                            }];
+[dataTask resume];
+    
 }
 
 @end
