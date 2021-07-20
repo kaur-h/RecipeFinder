@@ -9,6 +9,7 @@
 #import "Ingredient.h"
 #import "APIManager.h"
 #import "IngredientCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface AddIngredientsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -18,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *autoCompleteTableView;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) NSArray *autocompleteResults;
+@property (strong, nonatomic) NSArray *autocompleteImageNames;
+@property (strong, nonatomic) NSString *ingredientImageName;
 @end
 
 @implementation AddIngredientsViewController
@@ -54,6 +57,7 @@
                     else{
                         
                         self.autocompleteResults = [[NSArray alloc] initWithArray:ingredientNames];
+                        self.autocompleteImageNames = [[NSArray alloc] initWithArray:ingredientImages];
                         dispatch_sync(dispatch_get_main_queue(), ^{
                             [self.autoCompleteTableView reloadData];
                             });
@@ -73,7 +77,15 @@
     NSString *name = self.nameTextField.text;
     NSNumber *quantity = [NSNumber numberWithInt:[self.quantityTextField.text intValue]];
     
-    [Ingredient postIngredient:Nil withName:name withQuantity:quantity withCompletion:^(BOOL completed, NSError *error){
+    NSString *baseURLString = @"https://spoonacular.com/cdn/ingredients_100x100/";
+    NSString *fullImageURLString = [baseURLString stringByAppendingString:self.ingredientImageName];
+    NSURL *fullImageURL = [NSURL URLWithString:fullImageURLString];
+
+    NSData *data = [NSData dataWithContentsOfURL:fullImageURL];
+    UIImage *img = [[UIImage alloc] initWithData:data];
+    
+    
+    [Ingredient postIngredient:img withName:name withQuantity:quantity withCompletion:^(BOOL completed, NSError *error){
         if(completed){
             NSLog(@"Successfully posted ingredient!");
             [self dismissViewControllerAnimated:true completion:nil];
@@ -97,6 +109,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.nameTextField.text = [self.autocompleteResults objectAtIndex:indexPath.row];
+    self.ingredientImageName = [self.autocompleteImageNames objectAtIndex:indexPath.row];
     self.autoCompleteTableView.hidden = YES;
 }
 

@@ -25,7 +25,8 @@
     _ingredient = ingredient;
     self.ingredientName.text = ingredient[@"name"];
     self.ingredientQuantity.text = [NSString stringWithFormat: @"%@", ingredient[@"quantity"]];
-    
+    self.ingredientImage.file = ingredient[@"image"];
+    [self.ingredientImage loadInBackground];
 }
 
 @end

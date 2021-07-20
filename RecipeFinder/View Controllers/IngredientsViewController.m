@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSMutableArray *arrayOfIngredients;
 @property (weak, nonatomic) IBOutlet UIButton *addIngredientButton;
 @property (nonatomic,strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIButton *viewRecipesButton;
 @end
 
 @implementation IngredientsViewController
@@ -30,6 +31,7 @@
     [self fetchIngredients];
     
     self.addIngredientButton.layer.cornerRadius = 4;
+    self.viewRecipesButton.layer.cornerRadius = 4;
     
     //Refresh Control
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -77,5 +79,7 @@
 - (IBAction)addIngredientsTapped:(id)sender {
 }
 
+- (IBAction)viewRecipesTapped:(id)sender {
+}
 
 @end
