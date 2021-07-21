@@ -27,9 +27,8 @@
     
     self.topCollectionView.dataSource = self;
     self.bottomCollectionView.dataSource = self;
-    
-    [self findRecipes];
-    [self fetchRecipes];
+
+    [self deleteExistingRecipes];
     
     //Collection View Layout
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.topCollectionView.collectionViewLayout;
@@ -44,6 +43,7 @@
 }
 
 -(void) findRecipes{
+    
     //extracting the string with the ingredient names
     NSString *fullIngredientsList = @"";
     NSString *delimeter = @"%2C";
@@ -68,6 +68,10 @@
                     }
                 }];
             }
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self fetchRecipes];
+                [self.topCollectionView reloadData];
+            });
         }
     }];
 }
@@ -79,7 +83,7 @@
     [recipeQuery findObjectsInBackgroundWithBlock:^(NSArray<Recipe *> * _Nullable recipes, NSError * _Nullable error) {
         if (recipes) {
             // do something with the data fetched
-            NSLog(@"Successfully loaded home feed");
+            NSLog(@"Successfully loaded recipes");
             self.arrayOfRecipes = recipes;
             [self.topCollectionView reloadData];
         }
@@ -101,5 +105,38 @@
     return  self.arrayOfRecipes.count;
 }
 
+-(void) deleteExistingRecipes{
+    
+    __block NSArray<Recipe *> *recipesToDelete;
+    
+    PFQuery *recipeQuery = [Recipe query];
+    
+    [recipeQuery findObjectsInBackgroundWithBlock:^(NSArray<Recipe *> * _Nullable recipes, NSError * _Nullable error) {
+        if (recipes) {
+            // do something with the data fetched
+            recipesToDelete = [[NSArray alloc] initWithArray:recipes];
+            NSLog(@"In update ingredient method %lu", recipesToDelete.count);
+            
+            [PFObject deleteAllInBackground:recipesToDelete block:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    // The array of objects was successfully deleted.
+                    NSLog(@"Deleted all recipes");
+                    [self findRecipes];
+                    
+                } else {
+                    // There was an error. Check the errors localizedDescription.
+                    NSLog(@"%@", error.localizedDescription);
+                }
+            }];
+        }
+        else {
+            // handle error
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+
+    
+  
+}
 
 @end
