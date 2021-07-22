@@ -11,25 +11,29 @@
 #import "Ingredient.h"
 #import "Recipe.h"
 
-@interface RecipeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface RecipeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *topCollectionView;
-@property (weak, nonatomic) IBOutlet UICollectionView *bottomCollectionView;
+@property (weak, nonatomic) IBOutlet UIPickerView *recipeDisplayPicker;
 @property (nonatomic, strong) NSArray *arrayOfRecipes;
+@property (nonatomic, strong) NSArray *pickerData;
 @end
 
 @implementation RecipeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.topCollectionView.delegate = self;
-    self.bottomCollectionView.delegate = self;
     
+    //CollectionView setup
+    self.topCollectionView.delegate = self;
     self.topCollectionView.dataSource = self;
-    self.bottomCollectionView.dataSource = self;
+    
+    //UIPicker setup
+    self.pickerData = [[NSArray alloc] initWithObjects:@"Ready to make Recipes", @"Recipes missing one or more ingredients", @"All Recipes", nil];
+    self.recipeDisplayPicker.delegate = self;
+    self.recipeDisplayPicker.dataSource = self;
 
     [self fetchRecipes];
-    [self findRecipes];
+//    [self findRecipes];
     
     //Collection View Layout
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.topCollectionView.collectionViewLayout;
@@ -151,5 +155,24 @@
     }
     return false;
 }
+
+
+
+- (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.pickerData.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return self.pickerData[row];
+}
+
+- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    NSLog(@"Picker View Changed %@", self.pickerData[row]);
+}
+
 
 @end
