@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *recipeDisplayPicker;
 @property (nonatomic, strong) NSArray *arrayOfRecipes;
 @property (nonatomic, strong) NSArray *pickerData;
+@property (nonatomic, strong) NSArray *selectedRecipes;
 @end
 
 @implementation RecipeViewController
@@ -28,11 +29,11 @@
     self.topCollectionView.dataSource = self;
     
     //UIPicker setup
-    self.pickerData = [[NSArray alloc] initWithObjects:@"Ready to make Recipes", @"Recipes missing one or more ingredients", @"All Recipes", nil];
+    self.pickerData = [[NSArray alloc] initWithObjects: @"All Recipes", @"Ready to make Recipes", @"Recipes missing one or more ingredients", nil];
     self.recipeDisplayPicker.delegate = self;
     self.recipeDisplayPicker.dataSource = self;
 
-    [self fetchRecipes];
+    [self fetchAllRecipes];
 //    [self findRecipes];
     
     //Collection View Layout
@@ -82,12 +83,12 @@
                 }
             });
             //reload the collection view with the newly added recipes
-            [self fetchRecipes];
+            [self fetchAllRecipes];
         }
     }];
 }
 
--(void) fetchRecipes{
+-(void) fetchAllRecipes{
     PFQuery *recipeQuery = [Recipe query];
     [recipeQuery includeKey:@"user"];
     
@@ -96,6 +97,7 @@
             // do something with the data fetched
             NSLog(@"Successfully loaded recipes");
             self.arrayOfRecipes = recipes;
+            self.selectedRecipes = recipes;
             [self.topCollectionView reloadData];
         }
         else {
@@ -107,13 +109,13 @@
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RecipeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RecipeCell" forIndexPath:indexPath];
-    Recipe *recipe = self.arrayOfRecipes[indexPath.row];
+    Recipe *recipe = self.selectedRecipes[indexPath.row];
     [cell setRecipe:recipe];
    return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return  self.arrayOfRecipes.count;
+    return  self.selectedRecipes.count;
 }
 
 -(void) deleteExistingRecipes{
@@ -148,6 +150,7 @@
 }
 
 -(BOOL) isExistingRecipe: (NSString *)name{
+    //Goes through all recipes and if any of the recipe's name matches the parameter then recipe already exists
     for(Recipe *currRecipe in self.arrayOfRecipes){
         if([currRecipe[@"title"] isEqualToString:name]){
             return true;
@@ -155,8 +158,6 @@
     }
     return false;
 }
-
-
 
 - (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
     return 1;
@@ -171,7 +172,31 @@
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    NSLog(@"Picker View Changed %@", self.pickerData[row]);
+    if(row == 1 || row == 2){
+        NSArray *chosenRecipes = [self seperateRecipes:row];
+        self.selectedRecipes = [[NSArray alloc] initWithArray:chosenRecipes];
+        [self.topCollectionView reloadData];
+    }
+    else{
+        self.selectedRecipes = [[NSArray alloc] initWithArray:self.arrayOfRecipes];
+    }
+}
+
+-(NSArray *) seperateRecipes: (NSInteger)selection{
+    NSMutableArray *chosenRecipes = [[NSMutableArray alloc] init];
+    for(Recipe *currRecipe in self.arrayOfRecipes){
+        if(selection == 1){
+            if([currRecipe[@"missedIngredientCount"] intValue] == 0){
+                [chosenRecipes addObject:currRecipe];
+            }
+        }
+        else{
+            if([currRecipe[@"missedIngredientCount"] intValue] > 0){
+                [chosenRecipes addObject:currRecipe];
+            }
+        }
+    }
+    return chosenRecipes;
 }
 
 
