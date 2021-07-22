@@ -35,9 +35,9 @@
     self.recipeDisplayPicker.dataSource = self;
 
     [self fetchAllRecipes];
-//    [self findRecipes];
+//    [self findRecipes]; commented out to not make unnecessary API calls
     
-    //Collection View Layout
+    //CollectionView Layout setup
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.topCollectionView.collectionViewLayout;
     
     layout.minimumLineSpacing = 5;
@@ -95,7 +95,6 @@
     
     [recipeQuery findObjectsInBackgroundWithBlock:^(NSArray<Recipe *> * _Nullable recipes, NSError * _Nullable error) {
         if (recipes) {
-            // do something with the data fetched
             NSLog(@"Successfully loaded recipes");
             self.arrayOfRecipes = recipes;
             self.selectedRecipes = recipes;
@@ -173,71 +172,23 @@
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    RecipeUtilities *recipeUtil = [[RecipeUtilities alloc] init];
+    //If user does want to see all recipes, seperate them based on user choice
     if(row == 1 || row == 2){
-        NSArray *chosenRecipes = [self seperateRecipes:row];
+        NSArray *chosenRecipes = [recipeUtil seperateRecipes:row with:self.arrayOfRecipes];
         self.selectedRecipes = [[NSArray alloc] initWithArray:chosenRecipes];
+        
+        //If user wants to see recipes with more than one missing ingredients then sort the recipes
         if(row == 2){
-            self.selectedRecipes = [self sortRecipes:self.selectedRecipes];
-            NSLog(@"");
-            for(Recipe *x in self.selectedRecipes){
-                NSLog(@"%i", [x.usedIngredientCount intValue]);
-            }
+            self.selectedRecipes = [recipeUtil sortRecipes:self.selectedRecipes];
         }
     }
+    //The user wants to see all the recipes
     else{
         self.selectedRecipes = [[NSArray alloc] initWithArray:self.arrayOfRecipes];
     }
+    //Reload the recipes that the user sees
     [self.topCollectionView reloadData];
-}
-
--(NSArray *) seperateRecipes: (NSInteger)selection{
-    NSMutableArray *chosenRecipes = [[NSMutableArray alloc] init];
-    for(Recipe *currRecipe in self.arrayOfRecipes){
-        //Need to only select the recipes that have 0 missing ingredients
-        if(selection == 1 && [currRecipe[@"missedIngredientCount"] intValue] == 0){
-            [chosenRecipes addObject:currRecipe];
-        }
-        //Need to select the recipes that have more than 1 missing ingredients
-        else if(selection == 2 && [currRecipe[@"missedIngredientCount"] intValue] > 0){
-            [chosenRecipes addObject:currRecipe];
-        }
-    }
-    return chosenRecipes;
-}
-
--(NSArray *)sortRecipes: (NSArray *)recipes{
-    NSMutableArray *sortedRecipes = [[NSMutableArray alloc] initWithArray:recipes];
-    NSInteger arrLength = sortedRecipes.count;
-    
-    for(int i = 0; i < arrLength - 1; i++){
-        for(int j = 0; j < arrLength - i - 1; j++){
-            
-            int currMissedIngredientCount = [sortedRecipes[j][@"missedIngredientCount"] intValue];
-            int nextMissedIngredientCount = [sortedRecipes[j+1][@"missedIngredientCount"] intValue];
-            
-            int currUsedIngredientCount = [sortedRecipes[j][@"usedIngredientCount"] intValue];
-            int nextUsedIngredientCount = [sortedRecipes[j+1][@"usedIngredientCount"] intValue];
-            
-            NSString *currTitle = sortedRecipes[j][@"title"];
-            NSString *nextTitle = sortedRecipes[j+1][@"title"];
-            
-            
-            //Sorting based on missed ingredient count
-            if(currMissedIngredientCount > nextMissedIngredientCount){
-                [sortedRecipes exchangeObjectAtIndex:j withObjectAtIndex:(j+1)];
-            }
-            //if missed ingredient count is the same then sort based on used ingredient count
-            else if((currMissedIngredientCount == nextMissedIngredientCount) && (currUsedIngredientCount > nextUsedIngredientCount)){
-                    [sortedRecipes exchangeObjectAtIndex:j withObjectAtIndex:(j+1)];
-            }
-            //if used and missed ingredient count are the same then sort based on recipe title
-            else if((currMissedIngredientCount == nextMissedIngredientCount) && (currUsedIngredientCount == nextUsedIngredientCount) && ([currTitle compare:nextTitle] == NSOrderedDescending)){
-                [sortedRecipes exchangeObjectAtIndex:j withObjectAtIndex:(j+1)];
-            }
-        }
-    }
-
-    return sortedRecipes;
 }
 
 
