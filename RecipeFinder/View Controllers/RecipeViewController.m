@@ -35,7 +35,7 @@
     self.recipeDisplayPicker.dataSource = self;
 
     [self fetchAllRecipes];
-//    [self findRecipes]; commented out to not make unnecessary API calls
+    [self findRecipes];
     
     //CollectionView Layout setup
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.topCollectionView.collectionViewLayout;
