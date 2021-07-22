@@ -28,7 +28,8 @@
     self.topCollectionView.dataSource = self;
     self.bottomCollectionView.dataSource = self;
 
-    [self deleteExistingRecipes];
+    [self fetchRecipes];
+    [self findRecipes];
     
     //Collection View Layout
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.topCollectionView.collectionViewLayout;
@@ -53,25 +54,31 @@
     }
     fullIngredientsList = [fullIngredientsList substringToIndex:fullIngredientsList.length - 3];
 
+    //Making an API call to get the recipes
     [[APIManager shared] getRecipesBasedOnIngredients:fullIngredientsList completion:^(NSDictionary *recipes, NSError *error){
         if(error){
             NSLog(@"Error");
         }
         else{
-            for(NSDictionary *innerDictionary in recipes){
-                [Recipe initRecipeWithDictionary:innerDictionary withCompletion:^(BOOL completed, NSError *error){
-                    if(completed){
-                        NSLog(@"Successfully posted recipe!");
-                    }
-                    else{
-                        NSLog(@"Error posting recipe: %@", error.localizedDescription);
-                    }
-                }];
-            }
+            //if API call successful then initiate the recipes returned
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [self fetchRecipes];
-                [self.topCollectionView reloadData];
+                for(NSDictionary *innerDictionary in recipes){
+                    //if recipe title does not already exists in parse then add the recipe
+                    if([self isExistingRecipe:innerDictionary[@"title"]] == false){
+                        
+                        [Recipe initRecipeWithDictionary:innerDictionary withCompletion:^(BOOL completed, NSError *error){
+                            if(completed){
+                                NSLog(@"Successfully posted recipe!");
+                            }
+                            else{
+                                NSLog(@"Error posting recipe: %@", error.localizedDescription);
+                            }
+                        }];
+                    }
+                }
             });
+            //reload the collection view with the newly added recipes
+            [self fetchRecipes];
         }
     }];
 }
@@ -134,9 +141,15 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
 
-    
-  
+-(BOOL) isExistingRecipe: (NSString *)name{
+    for(Recipe *currRecipe in self.arrayOfRecipes){
+        if([currRecipe[@"title"] isEqualToString:name]){
+            return true;
+        }
+    }
+    return false;
 }
 
 @end
