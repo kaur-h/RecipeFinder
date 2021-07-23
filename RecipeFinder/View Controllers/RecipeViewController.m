@@ -180,7 +180,8 @@
         
         //If user wants to see recipes with more than one missing ingredients then sort the recipes
         if(row == 2){
-            self.selectedRecipes = [recipeUtil sortRecipes:self.selectedRecipes];
+            NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:self.selectedRecipes];
+            self.selectedRecipes = [recipeUtil performQuickSort:arr];
         }
     }
     //The user wants to see all the recipes

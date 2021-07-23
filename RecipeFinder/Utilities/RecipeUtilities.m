@@ -61,4 +61,52 @@
     return sortedRecipes;
 }
 
+-(NSInteger) partition: (NSMutableArray *) arr withLow:(NSInteger)low withHigh:(NSInteger)high{
+    //pivot to compare the elements to
+    NSInteger partitionPivot = [arr[high][@"missedIngredientCount"] intValue];
+    //index that indicates where the elements smaller than the pivot
+    NSInteger i = low - 1;
+    
+    //Goes through the array elements within the low and high range
+    for(int j = (int) low; j <= high - 1; j++){
+        //if the missed ingredient count of the current element is lower than the pivot then move the element to be at the left of the pivot
+        if([arr[j][@"missedIngredientCount"] intValue] < partitionPivot){
+            i++;
+            [arr exchangeObjectAtIndex:i withObjectAtIndex:j];
+        }
+        //if the missed ingredient count is the same compare in relation to used ingredient count
+        else if(([arr[j][@"missedIngredientCount"] intValue] == partitionPivot) && ([arr[j][@"usedIngredientCount"] intValue] < [arr[high][@"usedIngredientCount"] intValue])){
+            i++;
+            [arr exchangeObjectAtIndex:i withObjectAtIndex:j];
+        }
+        //if the used ingredient count is the same then compare in relation to the title of the recipe
+        else if(([arr[j][@"usedIngredientCount"] intValue] == [arr[high][@"usedIngredientCount"] intValue]) &&
+                ([arr[j][@"title"] compare:arr[high][@"title"]] == NSOrderedAscending)){
+            i++;
+            [arr exchangeObjectAtIndex:i withObjectAtIndex:j];
+        }
+    }
+    //swap the elements the so the pivot and the last element are in the correct place
+    [arr exchangeObjectAtIndex:i+1 withObjectAtIndex:high];
+    return i+1;
+}
+
+-(void) quickSort:(NSMutableArray *) arr withLow:(NSInteger)low withHigh:(NSInteger)high{
+    if(low < high){
+        //partition the array
+        int q = (int) [self partition:arr withLow:low withHigh:high];
+        
+        //keep sorting the 2 arrays to the left and right of the partition
+        [self quickSort:arr withLow:low withHigh:q-1];
+        [self quickSort:arr withLow:q+1 withHigh:high];
+    }
+}
+
+-(NSArray *) performQuickSort:(NSMutableArray *)arr{
+    //Quicksort the array and returned the sorted array
+    [self quickSort:arr withLow:0 withHigh:arr.count -1];
+    NSArray *retArr = [[NSArray alloc] initWithArray:arr];
+    return retArr;
+}
+
 @end

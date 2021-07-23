@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSArray *) seperateRecipes: (NSInteger)selection with: (NSArray *) recipes;
 -(NSArray *)sortRecipes: (NSArray *)recipes;
+-(NSArray *) performQuickSort:(NSMutableArray *)arr;
 
 @end
 
