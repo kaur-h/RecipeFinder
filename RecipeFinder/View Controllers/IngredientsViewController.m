@@ -11,7 +11,7 @@
 #import "Parse/Parse.h"
 #import "RecipeViewController.h"
 
-@interface IngredientsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface IngredientsViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *ingredientSearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrayOfIngredients;
@@ -39,6 +39,12 @@
     self.refreshControl.tintColor = UIColor.blackColor;
     [self.refreshControl addTarget:self action:@selector(fetchIngredients) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    //Swipe Gesture
+    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedTableCell:)];
+    recognizer.delegate = self;
+    [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [self.tableView addGestureRecognizer:recognizer];
 }
 
 - (void) fetchIngredients{
@@ -85,6 +91,25 @@
     RecipeViewController *recipeController = navController.viewControllers[0];
     recipeController.userIngredients = self.arrayOfIngredients;
     [self.tabBarController setSelectedIndex:1];
+}
+
+-(void) swipedTableCell: (UITapGestureRecognizer *) sender{
+
+    //Finding out on what cell in table view the tap gesture was called for
+    CGPoint location = [sender locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    IngredientCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    //Locating the ingredient corresponding to the cell and deleting it
+    PFQuery *ingredientQuery = [Ingredient query];
+    [ingredientQuery getObjectInBackgroundWithId:[cell.ingredient objectId] block:^(PFObject *parseObject, NSError *error) {
+        if(parseObject){
+            NSLog(@"Object found and is being deleted");
+            [parseObject delete];
+        }
+    }];
+    
+    [self.tableView reloadData];
 }
 
 @end

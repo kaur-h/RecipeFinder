@@ -156,6 +156,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="deleteButton" destination="5yf-wm-8s2" id="WKU-z0-hdY"/>
                                             <outlet property="ingredientImage" destination="kkq-HL-EfQ" id="xbT-dd-wwM"/>
