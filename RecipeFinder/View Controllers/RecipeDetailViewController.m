@@ -62,6 +62,12 @@
 
 }
 - (IBAction)viewFullRecipeTapped:(id)sender {
+    NSURL *url = [[NSURL alloc] initWithString:self.recipeDetails[@"sourceUrl"]];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(bool success){
+        if(success){
+            NSLog(@"Successfully opened url!");
+        }
+    }];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
