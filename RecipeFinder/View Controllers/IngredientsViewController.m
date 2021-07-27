@@ -52,6 +52,7 @@
     PFQuery *ingredientQuery = [Ingredient query];
     [ingredientQuery orderByDescending:@"createdAt"];
     [ingredientQuery includeKey:@"user"];
+    [ingredientQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     
     // fetch data asynchronously
     [ingredientQuery findObjectsInBackgroundWithBlock:^(NSArray<Ingredient *> * _Nullable ingredients, NSError * _Nullable error) {

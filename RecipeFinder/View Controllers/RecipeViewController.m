@@ -36,7 +36,7 @@
     self.recipeDisplayPicker.dataSource = self;
 
     [self fetchAllRecipes];
-    [self findRecipes];
+//    [self findRecipes];
     
     //CollectionView Layout setup
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.topCollectionView.collectionViewLayout;
@@ -93,6 +93,7 @@
 -(void) fetchAllRecipes{
     PFQuery *recipeQuery = [Recipe query];
     [recipeQuery includeKey:@"user"];
+    [recipeQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     
     [recipeQuery findObjectsInBackgroundWithBlock:^(NSArray<Recipe *> * _Nullable recipes, NSError * _Nullable error) {
         if (recipes) {
