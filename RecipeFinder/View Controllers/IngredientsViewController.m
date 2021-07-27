@@ -52,7 +52,6 @@
     PFQuery *ingredientQuery = [Ingredient query];
     [ingredientQuery orderByDescending:@"createdAt"];
     [ingredientQuery includeKey:@"user"];
-    ingredientQuery.limit = 20;
     
     // fetch data asynchronously
     [ingredientQuery findObjectsInBackgroundWithBlock:^(NSArray<Ingredient *> * _Nullable ingredients, NSError * _Nullable error) {

@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getAutoCompleteIngredientSearch:(NSString *)text completion:(void(^)(NSArray *ingredientNames, NSArray *ingredientImages, NSError *error))completion;
 
 -(void) getRecipesBasedOnIngredients:(NSString *)ingredients completion:(void(^) (NSDictionary *recipes, NSError *error))completion;
+
+-(void) getRecipeInformation:(NSNumber *) ingredientId completion:(void(^) (NSDictionary *information, NSError *error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

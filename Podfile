@@ -10,6 +10,7 @@ target 'RecipeFinder' do
   pod 'Parse'
   pod 'Parse/UI'
   pod 'DateTools'
+  pod 'Cosmos', '~> 23.0'
 
   target 'RecipeFinderTests' do
     inherit! :search_paths

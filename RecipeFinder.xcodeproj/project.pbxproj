@@ -12,6 +12,7 @@
 		949AD746E56EE30785FD2A85 /* Pods_RecipeFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039643394EB99B4393E23CEE /* Pods_RecipeFinder.framework */; };
 		D67158E526A76D01001AF551 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = D67158E426A76D01001AF551 /* Recipe.m */; };
 		D67158E926AA172B001AF551 /* RecipeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D67158E826AA172B001AF551 /* RecipeUtilities.m */; };
+		D67A0B5D26B05B2B00306B1B /* ExtendedIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D67A0B5C26B05B2B00306B1B /* ExtendedIngredientCell.m */; };
 		D6EBC454269CD8250007187D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC453269CD8250007187D /* AppDelegate.m */; };
 		D6EBC457269CD8250007187D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EBC456269CD8250007187D /* SceneDelegate.m */; };
 		D6EBC45D269CD8250007187D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EBC45B269CD8250007187D /* Main.storyboard */; };
@@ -67,6 +68,8 @@
 		D67158E426A76D01001AF551 /* Recipe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
 		D67158E726AA172B001AF551 /* RecipeUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeUtilities.h; sourceTree = "<group>"; };
 		D67158E826AA172B001AF551 /* RecipeUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeUtilities.m; sourceTree = "<group>"; };
+		D67A0B5B26B05B2B00306B1B /* ExtendedIngredientCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtendedIngredientCell.h; sourceTree = "<group>"; };
+		D67A0B5C26B05B2B00306B1B /* ExtendedIngredientCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtendedIngredientCell.m; sourceTree = "<group>"; };
 		D6EBC44F269CD8250007187D /* RecipeFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EBC452269CD8250007187D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D6EBC453269CD8250007187D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 				D6EBC4A6269E26FE0007187D /* FavoriteCell.m */,
 				D6EBC4A8269F6F1C0007187D /* RecipeCell.h */,
 				D6EBC4A9269F6F1C0007187D /* RecipeCell.m */,
+				D67A0B5B26B05B2B00306B1B /* ExtendedIngredientCell.h */,
+				D67A0B5C26B05B2B00306B1B /* ExtendedIngredientCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -545,6 +550,7 @@
 				D6EBC4B826A1DA3C0007187D /* APIManager.m in Sources */,
 				D6EBC4A7269E26FE0007187D /* FavoriteCell.m in Sources */,
 				D6EBC4B426A1C8920007187D /* Ingredient.m in Sources */,
+				D67A0B5D26B05B2B00306B1B /* ExtendedIngredientCell.m in Sources */,
 				D6EBC457269CD8250007187D /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

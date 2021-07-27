@@ -11,6 +11,7 @@
 #import "Ingredient.h"
 #import "Recipe.h"
 #import "RecipeUtilities.h"
+#import "RecipeDetailViewController.h"
 
 @interface RecipeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *topCollectionView;
@@ -35,7 +36,7 @@
     self.recipeDisplayPicker.dataSource = self;
 
     [self fetchAllRecipes];
-    [self findRecipes];
+//    [self findRecipes];
     
     //CollectionView Layout setup
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.topCollectionView.collectionViewLayout;
@@ -192,5 +193,18 @@
     [self.topCollectionView reloadData];
 }
 
+#pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString: @"recipeDetailsSegue"]){
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.topCollectionView indexPathForCell:tappedCell];
+        Recipe *recipe = self.selectedRecipes[indexPath.row];
+        RecipeDetailViewController *detailController = [segue destinationViewController];
+        [detailController displayRecipeInfo:recipe];
+    }
+}
 @end

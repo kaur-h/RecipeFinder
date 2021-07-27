@@ -97,4 +97,36 @@ static NSString * const baseURLString = @"";
     
 }
 
+-(void) getRecipeInformation:(NSNumber *) ingredientId completion:(void(^) (NSDictionary *information, NSError *error))completion{
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+         
+    NSString *key= [dict objectForKey: @"RapidAPIKey"];
+    NSDictionary *headers = @{ @"x-rapidapi-key": key,
+                           @"x-rapidapi-host": @"spoonacular-recipe-food-nutrition-v1.p.rapidapi.com" };
+    
+    NSString *begginingRequest = @"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/";
+    NSString *endRequest = @"/information";
+    NSString *fullRequest = [[begginingRequest stringByAppendingString:[ingredientId stringValue]] stringByAppendingString:endRequest];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:fullRequest]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:headers];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error);
+                                                        completion(nil, error);
+                                                    } else {
+                                                        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                                                        completion(dataDictionary, nil);
+                                                    }
+                                                }];
+    [dataTask resume];
+}
+
 @end
