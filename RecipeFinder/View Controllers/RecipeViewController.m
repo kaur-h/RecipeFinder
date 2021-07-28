@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray *arrayOfRecipes;
 @property (nonatomic, strong) NSArray *pickerData;
 @property (nonatomic, strong) NSArray *selectedRecipes;
+@property (nonatomic,strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation RecipeViewController
@@ -47,6 +48,14 @@
     CGFloat postersPerLine = 2;
     CGFloat itemWidth = (self.topCollectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right - layout.minimumInteritemSpacing * (postersPerLine - 1)) / postersPerLine;
     layout.itemSize = CGSizeMake( itemWidth, (itemWidth - layout.sectionInset.top)*1.5);
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(reloadCollectionView) name:@"refreshCollectionView" object:nil];
+    
+    //Refresh Control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.tintColor = UIColor.blackColor;
+    [self.refreshControl addTarget:self action:@selector(fetchAllRecipes) forControlEvents:UIControlEventValueChanged];
+    [self.topCollectionView insertSubview:self.refreshControl atIndex:0];
     
 }
 
@@ -101,6 +110,8 @@
             self.arrayOfRecipes = recipes;
             self.selectedRecipes = recipes;
             [self.topCollectionView reloadData];
+            [self.refreshControl endRefreshing];
+            [self.recipeDisplayPicker selectRow:0 inComponent:0 animated:true];
         }
         else {
             // handle error
@@ -113,7 +124,7 @@
     RecipeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RecipeCell" forIndexPath:indexPath];
     Recipe *recipe = self.selectedRecipes[indexPath.row];
     [cell setRecipe:recipe];
-   return cell;
+    return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -194,6 +205,13 @@
     [self.topCollectionView reloadData];
 }
 
+-(void)reloadCollectionView{
+    [self fetchAllRecipes];
+    [self.recipeDisplayPicker reloadAllComponents];
+    [self.recipeDisplayPicker selectRow:0 inComponent:0 animated:true];
+    [self.topCollectionView reloadData];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -208,4 +226,5 @@
         [detailController displayRecipeInfo:recipe];
     }
 }
+
 @end

@@ -52,6 +52,7 @@
                 self.starRatings.rating = ([self.recipeDetails[@"spoonacularScore"] doubleValue] / 100) * 5;
                 self.extendedIngredients = self.recipeDetails[@"extendedIngredients"];
                 [self.tableView reloadData];
+                [self favoritedOrNot];
             });
         }
     }];
@@ -78,6 +79,28 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.extendedIngredients.count;
+}
+- (IBAction)favoriteButtonTapped:(id)sender {
+    //if already favorited then unfavorite
+    if([self.recipe[@"favorited"] isEqual:@YES]){
+        self.recipe[@"favorited"] = @NO;
+    }
+    else{
+        self.recipe[@"favorited"] = @YES;
+    }
+    [self.recipe save];
+    [self favoritedOrNot];
+}
+
+-(void) favoritedOrNot{
+    //based on if the recipe is in favorites or not change the image displayed on the button
+    if([self.recipe[@"favorited"] isEqual:@YES]){
+        [self.favoriteButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.favoriteButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
+    }
+    [NSNotificationCenter.defaultCenter postNotificationName:@"refreshCollectionView" object:nil];
 }
 
 @end

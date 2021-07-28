@@ -246,6 +246,9 @@
                                                         <constraint firstAttribute="height" constant="22" id="nHd-30-cEB"/>
                                                     </constraints>
                                                     <state key="normal" image="heart" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="favoriteButtonTapped:" destination="ehC-Hy-Qjk" eventType="touchUpInside" id="g4J-nw-OnG"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -316,6 +319,9 @@
                                 <rect key="frame" x="373" y="416" width="21" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="heart" catalog="system"/>
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="8XU-Uy-BJI" eventType="touchUpInside" id="khr-4z-ldK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWJ-jt-i85">
                                 <rect key="frame" x="151" y="783" width="112" height="30"/>
@@ -580,7 +586,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCT-kY-GEl">
-                                                    <rect key="frame" x="68" y="16" width="115" height="21"/>
+                                                    <rect key="frame" x="68" y="16" width="250" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -591,25 +597,16 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3z-6P-nxw">
-                                                    <rect key="frame" x="340" y="16" width="21" height="22"/>
+                                                    <rect key="frame" x="378" y="16" width="21" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="heart.fill" catalog="system"/>
                                                     <connections>
                                                         <action selector="favoriteTapped:" destination="k64-9h-fAD" eventType="touchUpInside" id="P6w-0l-xgC"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMr-Dj-BKp">
-                                                    <rect key="frame" x="374" y="15" width="20" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="trash" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="deleteTapped:" destination="k64-9h-fAD" eventType="touchUpInside" id="zEh-2k-n50"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="deleteButton" destination="NMr-Dj-BKp" id="8pQ-WV-Jqc"/>
                                             <outlet property="favoriteButton" destination="A3z-6P-nxw" id="Uja-lb-4DJ"/>
                                             <outlet property="recipeImage" destination="mSC-7b-KPq" id="ldD-d9-6BM"/>
                                             <outlet property="recipeName" destination="KCT-kY-GEl" id="RSr-VK-wRM"/>
@@ -925,7 +922,6 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

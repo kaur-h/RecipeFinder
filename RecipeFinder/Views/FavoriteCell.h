@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Recipe.h"
 @import Parse;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *recipeName;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (strong, nonatomic) Recipe *recipe;
+- (void) setRecipe: (Recipe *) recipe;
 
 @end
 

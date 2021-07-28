@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *missedIngredientCount;
 @property (nonatomic, strong) NSNumber *likes;
 @property (nonatomic, strong) PFUser *user;
+@property (nonatomic) BOOL favorited;
 
 +(void) initRecipeWithDictionary: (NSDictionary *) data withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
