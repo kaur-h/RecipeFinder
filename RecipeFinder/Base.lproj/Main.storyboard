@@ -610,6 +610,7 @@
                                             <outlet property="favoriteButton" destination="A3z-6P-nxw" id="Uja-lb-4DJ"/>
                                             <outlet property="recipeImage" destination="mSC-7b-KPq" id="ldD-d9-6BM"/>
                                             <outlet property="recipeName" destination="KCT-kY-GEl" id="RSr-VK-wRM"/>
+                                            <segue destination="8XU-Uy-BJI" kind="show" identifier="favoriteDetailSegue" id="E1H-fT-HXh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -915,8 +916,14 @@
             <point key="canvasLocation" x="100.00000000000001" y="108.48214285714285"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="daA-Vn-Mom">
+            <size key="intrinsicContentSize" width="95" height="15"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="lcb-hu-4U4"/>
+        <segue reference="E1H-fT-HXh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
