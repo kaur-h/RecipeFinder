@@ -23,22 +23,29 @@
 }
 
 - (void) setIngredient:(NSDictionary *) ingredientInfo{
-    _ingredientDetails = ingredientInfo;
-    self.ingredientName.text = ingredientInfo[@"name"];
-    
-    NSString *baseURLString = @"https://spoonacular.com/cdn/ingredients_100x100/";
-    NSString *fullImageURLString = [baseURLString stringByAppendingString:ingredientInfo[@"image"]];
-    NSURL *fullImageURL = [NSURL URLWithString:fullImageURLString];
 
-    NSData *data = [NSData dataWithContentsOfURL:fullImageURL];
-    UIImage *img = [[UIImage alloc] initWithData:data];
-    self.ingredientImage.image = img;
-    
-    [self isExistingIngredient:ingredientInfo[@"name"] completion:^(bool isExisting, NSError *error){
-        if(isExisting){
-            self.includedImage.image = [UIImage systemImageNamed:@"checkmark"];
-        }
-    }];
+    if(![ingredientInfo[@"image"] isEqual:[NSNull null]]){
+        _ingredientDetails = ingredientInfo;
+        self.ingredientName.text = ingredientInfo[@"name"];
+        
+        NSString *baseURLString = @"https://spoonacular.com/cdn/ingredients_100x100/";
+        NSString *fullImageURLString = [baseURLString stringByAppendingString:ingredientInfo[@"image"]];
+        NSURL *fullImageURL = [NSURL URLWithString:fullImageURLString];
+
+        NSData *data = [NSData dataWithContentsOfURL:fullImageURL];
+        UIImage *img = [[UIImage alloc] initWithData:data];
+        self.ingredientImage.image = img;
+        
+        [self isExistingIngredient:ingredientInfo[@"name"] completion:^(bool isExisting, NSError *error){
+            if(isExisting){
+                self.includedImage.image = [UIImage systemImageNamed:@"checkmark"];
+            }
+        }];
+    }
+    else{
+        self.ingredientName.text = @"";
+        self.includedImage.image = [[UIImage alloc] init];
+    }
 }
 
 -(void) isExistingIngredient:(NSString *) ingredientName completion:(void(^) (bool isExisting, NSError *error))completion{
