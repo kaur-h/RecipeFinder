@@ -9,6 +9,8 @@
 @import Parse;
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
+#import "Ingredient.h"
+#import "Recipe.h"
 
 @interface ProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -27,6 +29,7 @@
     self.logoutButton.layer.cornerRadius = 4;
     self.profileImage.layer.cornerRadius = 80;
     
+    //getting profile image of user
     PFUser *user = [PFUser currentUser];
     PFFileObject *userProfileFile = user[@"profileImage"];
     if(userProfileFile){
@@ -34,7 +37,50 @@
         self.profileImage.image = [[UIImage alloc] initWithData:imageData];
     }
     
+    
+    //displaying username
+    self.usernameLabel.text = user.username;
+    
+    [self displayIngredientsAndFavorites];
+   
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(displayIngredientsAndFavorites) name:@"refreshFavoritesTable" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(displayIngredientsAndFavorites) name:@"refreshCollectionView" object:nil];
 }
+
+-(void) displayIngredientsAndFavorites{
+    //displaying number of ingredients
+    PFQuery *ingredientQuery = [Ingredient query];
+    [ingredientQuery includeKey:@"user"];
+    [ingredientQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    
+    [ingredientQuery findObjectsInBackgroundWithBlock:^(NSArray<Ingredient *> * _Nullable ingredients, NSError * _Nullable error) {
+        if (ingredients) {
+            self.ingredientCountLabel.text = [NSString stringWithFormat:@"%lu", ingredients.count];
+        }
+        else {
+            // handle error
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+    //displaying number of favorites
+    PFQuery *recipeQuery = [Recipe query];
+    [recipeQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [recipeQuery whereKey:@"favorited" equalTo:@YES];
+    
+    // fetch data asynchronously
+    [recipeQuery findObjectsInBackgroundWithBlock:^(NSArray<Recipe *> * _Nullable recipes, NSError * _Nullable error) {
+        if (recipes) {
+            NSLog(@"%lu", recipes.count);
+            self.favoriteCountLabel.text = [NSString stringWithFormat:@"%lu", recipes.count];
+        }
+        else {
+            // handle error
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
 - (IBAction)logoutTapped:(id)sender {
     //Logging out user
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
