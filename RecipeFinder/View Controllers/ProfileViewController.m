@@ -71,7 +71,6 @@
     // fetch data asynchronously
     [recipeQuery findObjectsInBackgroundWithBlock:^(NSArray<Recipe *> * _Nullable recipes, NSError * _Nullable error) {
         if (recipes) {
-            NSLog(@"%lu", recipes.count);
             self.favoriteCountLabel.text = [NSString stringWithFormat:@"%lu", recipes.count];
         }
         else {

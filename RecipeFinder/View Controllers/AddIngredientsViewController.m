@@ -88,6 +88,7 @@
     [Ingredient postIngredient:img withName:name withQuantity:quantity withCompletion:^(BOOL completed, NSError *error){
         if(completed){
             NSLog(@"Successfully posted ingredient!");
+            [NSNotificationCenter.defaultCenter postNotificationName:@"refreshIngredients" object:nil];
             [self dismissViewControllerAnimated:true completion:nil];
         }
         else{

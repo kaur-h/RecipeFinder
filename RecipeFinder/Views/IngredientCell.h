@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet PFImageView *ingredientImage;
 @property (weak, nonatomic) IBOutlet UILabel *ingredientName;
 @property (weak, nonatomic) IBOutlet UILabel *ingredientQuantity;
-@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UIView *progressView;
 
 - (void)setIngredient:(Ingredient *)ingredient;
 

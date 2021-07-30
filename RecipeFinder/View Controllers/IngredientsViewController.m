@@ -45,6 +45,8 @@
     recognizer.delegate = self;
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
     [self.tableView addGestureRecognizer:recognizer];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fetchIngredients) name:@"refreshIngredients" object:nil];
 }
 
 - (void) fetchIngredients{
@@ -100,16 +102,24 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     IngredientCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
-    //Locating the ingredient corresponding to the cell and deleting it
-    PFQuery *ingredientQuery = [Ingredient query];
-    [ingredientQuery getObjectInBackgroundWithId:[cell.ingredient objectId] block:^(PFObject *parseObject, NSError *error) {
-        if(parseObject){
-            NSLog(@"Object found and is being deleted");
-            [parseObject delete];
-        }
+    
+    [UIView animateWithDuration:0.5 delay:0.05 options:0 animations:^{cell.progressView.alpha = 1;
+        [cell.progressView setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+        cell.progressView.backgroundColor = [UIColor redColor];} completion:^(BOOL finished){
+            NSLog(@"Color transformation Completed");
+            //Locating the ingredient corresponding to the cell and deleting it
+            PFQuery *ingredientQuery = [Ingredient query];
+            [ingredientQuery getObjectInBackgroundWithId:[cell.ingredient objectId] block:^(PFObject *parseObject, NSError *error) {
+                if(parseObject){
+                    NSLog(@"Object found and is being deleted");
+                    [parseObject delete];
+                    [self fetchIngredients];
+                }
+            }];
     }];
     
-    [self.tableView reloadData];
+
 }
+
 
 @end
