@@ -101,6 +101,7 @@
         [self.favoriteButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
     }
     [NSNotificationCenter.defaultCenter postNotificationName:@"refreshCollectionView" object:nil];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"refreshFavoritesTable" object:nil];
 }
 
 @end

@@ -45,8 +45,8 @@
     layout.minimumLineSpacing = 5;
     layout.minimumInteritemSpacing = 5;
     
-    CGFloat postersPerLine = 2;
-    CGFloat itemWidth = (self.topCollectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right - layout.minimumInteritemSpacing * (postersPerLine - 1)) / postersPerLine;
+    CGFloat recipesPerLine = 2;
+    CGFloat itemWidth = (self.topCollectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right - layout.minimumInteritemSpacing * (recipesPerLine - 1)) / recipesPerLine;
     layout.itemSize = CGSizeMake( itemWidth, (itemWidth - layout.sectionInset.top)*1.5);
     
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(reloadCollectionView) name:@"refreshCollectionView" object:nil];
@@ -203,6 +203,18 @@
     }
     //Reload the recipes that the user sees
     [self.topCollectionView reloadData];
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel* pickerLabel = (UILabel*)view;
+    if (!pickerLabel){
+        pickerLabel = [[UILabel alloc] init];
+        pickerLabel.font = [UIFont fontWithName:@"Didot" size:20];
+        pickerLabel.textAlignment=NSTextAlignmentCenter;
+    }
+    [pickerLabel setText:[self.pickerData objectAtIndex:row]];
+    return pickerLabel;
 }
 
 -(void)reloadCollectionView{

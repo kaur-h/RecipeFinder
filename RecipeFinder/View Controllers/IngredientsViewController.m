@@ -12,7 +12,6 @@
 #import "RecipeViewController.h"
 
 @interface IngredientsViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
-@property (weak, nonatomic) IBOutlet UISearchBar *ingredientSearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrayOfIngredients;
 @property (weak, nonatomic) IBOutlet UIButton *addIngredientButton;
@@ -72,8 +71,6 @@
     }];
 }
 
-
-
 - (NSInteger) tableView: (UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.arrayOfIngredients.count;
 }
@@ -83,9 +80,6 @@
     Ingredient *ingredient = self.arrayOfIngredients[indexPath.row];
     [cell setIngredient:ingredient];
     return cell;
-}
-
-- (IBAction)addIngredientsTapped:(id)sender {
 }
 
 - (IBAction)viewRecipesTapped:(id)sender {
@@ -117,9 +111,6 @@
                 }
             }];
     }];
-    
-
 }
-
 
 @end

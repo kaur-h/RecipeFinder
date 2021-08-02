@@ -19,8 +19,14 @@
     _recipe = recipe;
     self.recipeImage.file = recipe[@"image"];
     self.recipeName.text = recipe[@"title"];
+    self.recipeImage.layer.cornerRadius = 20;
     [self.recipeImage loadInBackground];
     [self favoritedOrNot];
+    
+    self.contentView.layer.cornerRadius = 20;
+    self.contentView.layer.masksToBounds = true;
+    self.layer.cornerRadius = 20;
+    self.layer.masksToBounds = false;
 }
 
 -(void) favoritedOrNot{
@@ -45,6 +51,7 @@
         [self.recipe saveInBackground];
         [self favoritedOrNot];
     }
+    [NSNotificationCenter.defaultCenter postNotificationName:@"refreshFavoritesTable" object:nil];
 }
 
 

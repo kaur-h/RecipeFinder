@@ -25,6 +25,7 @@
     _recipe = recipe;
     self.recipeName.text = self.recipe[@"title"];
     self.recipeImage.file = self.recipe[@"image"];
+    self.recipeImage.layer.cornerRadius = 5;
     [self.recipeImage loadInBackground];
     [self.favoriteButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
 }

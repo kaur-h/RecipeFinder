@@ -27,6 +27,7 @@
     self.ingredientQuantity.text = [NSString stringWithFormat: @"%@", ingredient[@"quantity"]];
     self.ingredientImage.file = ingredient[@"image"];
     [self.ingredientImage loadInBackground];
+    self.ingredientImage.layer.cornerRadius = 4;
 }
 
 @end

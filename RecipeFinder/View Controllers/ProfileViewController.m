@@ -37,7 +37,6 @@
         self.profileImage.image = [[UIImage alloc] initWithData:imageData];
     }
     
-    
     //displaying username
     self.usernameLabel.text = user.username;
     
@@ -45,6 +44,7 @@
    
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(displayIngredientsAndFavorites) name:@"refreshFavoritesTable" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(displayIngredientsAndFavorites) name:@"refreshCollectionView" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(displayIngredientsAndFavorites) name:@"refreshIngredients" object:nil];
 }
 
 -(void) displayIngredientsAndFavorites{
