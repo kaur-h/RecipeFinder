@@ -127,7 +127,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eggs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGs-PE-WrP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eggs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGs-PE-WrP">
                                                     <rect key="frame" x="65" y="18" width="43.5" height="25"/>
                                                     <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -160,7 +160,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="kkq-HL-EfQ" secondAttribute="bottom" constant="8" id="PVH-Et-vRt"/>
                                                 <constraint firstItem="LGs-PE-WrP" firstAttribute="leading" secondItem="kkq-HL-EfQ" secondAttribute="trailing" constant="8" id="Vbd-Qx-B5y"/>
                                                 <constraint firstItem="Dqf-hM-399" firstAttribute="top" secondItem="DUB-bI-rEm" secondAttribute="top" constant="21" id="XGU-l6-dCk"/>
-                                                <constraint firstItem="Dqf-hM-399" firstAttribute="leading" secondItem="LGs-PE-WrP" secondAttribute="trailing" constant="274.5" id="eSt-4L-Lqf"/>
                                                 <constraint firstAttribute="bottom" secondItem="Dqf-hM-399" secondAttribute="bottom" constant="17" id="kn8-34-Z7B"/>
                                                 <constraint firstItem="kkq-HL-EfQ" firstAttribute="leading" secondItem="DUB-bI-rEm" secondAttribute="leading" constant="11" id="oAD-4X-4Ir"/>
                                             </constraints>
