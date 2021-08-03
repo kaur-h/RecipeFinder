@@ -59,8 +59,7 @@
     
 }
 
--(void) findRecipes{
-    
+- (void) findRecipes{
     //extracting the string with the ingredient names
     NSString *fullIngredientsList = @"";
     NSString *delimeter = @"%2C";
@@ -99,7 +98,7 @@
     }];
 }
 
--(void) fetchAllRecipes{
+- (void) fetchAllRecipes{
     PFQuery *recipeQuery = [Recipe query];
     [recipeQuery includeKey:@"user"];
     [recipeQuery whereKey:@"user" equalTo:[PFUser currentUser]];
@@ -131,10 +130,8 @@
     return  self.selectedRecipes.count;
 }
 
--(void) deleteExistingRecipes{
-    
+- (void) deleteExistingRecipes{
     __block NSArray<Recipe *> *recipesToDelete;
-    
     PFQuery *recipeQuery = [Recipe query];
     
     [recipeQuery findObjectsInBackgroundWithBlock:^(NSArray<Recipe *> * _Nullable recipes, NSError * _Nullable error) {
@@ -162,7 +159,7 @@
     }];
 }
 
--(BOOL) isExistingRecipe: (NSString *)name{
+- (BOOL) isExistingRecipe: (NSString *)name{
     //Goes through all recipes and if any of the recipe's name matches the parameter then recipe already exists
     for(Recipe *currRecipe in self.arrayOfRecipes){
         if([currRecipe[@"title"] isEqualToString:name]){
@@ -205,8 +202,7 @@
     [self.topCollectionView reloadData];
 }
 
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
-{
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
     UILabel* pickerLabel = (UILabel*)view;
     if (!pickerLabel){
         pickerLabel = [[UILabel alloc] init];
@@ -217,7 +213,7 @@
     return pickerLabel;
 }
 
--(void)reloadCollectionView{
+- (void)reloadCollectionView{
     [self fetchAllRecipes];
     [self.recipeDisplayPicker reloadAllComponents];
     [self.recipeDisplayPicker selectRow:0 inComponent:0 animated:true];

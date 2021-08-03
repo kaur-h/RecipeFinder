@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ingredientCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteCountLabel;
-@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 
 @end
@@ -26,7 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.logoutButton.layer.cornerRadius = 4;
     self.profileImage.layer.cornerRadius = 80;
     
     //getting profile image of user
@@ -39,7 +37,6 @@
     
     //displaying username
     self.usernameLabel.text = user.username;
-    
     [self displayIngredientsAndFavorites];
    
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(displayIngredientsAndFavorites) name:@"refreshFavoritesTable" object:nil];
@@ -47,7 +44,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(displayIngredientsAndFavorites) name:@"refreshIngredients" object:nil];
 }
 
--(void) displayIngredientsAndFavorites{
+- (void) displayIngredientsAndFavorites{
     //displaying number of ingredients
     PFQuery *ingredientQuery = [Ingredient query];
     [ingredientQuery includeKey:@"user"];
@@ -111,7 +108,6 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
     // Get the image captured by the UIImagePickerController
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 

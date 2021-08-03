@@ -43,7 +43,6 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    
     NSString *text = [textField.text stringByAppendingString:string];
     if (string.length == 0) {
         text = [text stringByReplacingCharactersInRange:range withString:@""];
@@ -55,12 +54,11 @@
                         NSLog(@"Error");
                     }
                     else{
-                        
                         self.autocompleteResults = [[NSArray alloc] initWithArray:ingredientNames];
                         self.autocompleteImageNames = [[NSArray alloc] initWithArray:ingredientImages];
                         dispatch_sync(dispatch_get_main_queue(), ^{
                             [self.autoCompleteTableView reloadData];
-                            });
+                        });
                     }
                 }];
     }
@@ -73,7 +71,6 @@
 
 
 - (IBAction)addTapped:(id)sender {
-    
     NSString *name = self.nameTextField.text;
     NSNumber *quantity = [NSNumber numberWithInt:[self.quantityTextField.text intValue]];
     
@@ -83,7 +80,6 @@
 
     NSData *data = [NSData dataWithContentsOfURL:fullImageURL];
     UIImage *img = [[UIImage alloc] initWithData:data];
-    
     
     [Ingredient postIngredient:img withName:name withQuantity:quantity withCompletion:^(BOOL completed, NSError *error){
         if(completed){
@@ -107,8 +103,7 @@
     return 10;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.nameTextField.text = [self.autocompleteResults objectAtIndex:indexPath.row];
     self.ingredientImageName = [self.autocompleteImageNames objectAtIndex:indexPath.row];
     self.autoCompleteTableView.hidden = YES;

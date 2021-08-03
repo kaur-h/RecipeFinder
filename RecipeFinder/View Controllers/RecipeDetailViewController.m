@@ -40,7 +40,7 @@
     [self fetchRecipeDetails];
 }
 
--(void) fetchRecipeDetails {
+- (void) fetchRecipeDetails {
     [[APIManager shared] getRecipeInformation:[self.recipe recipeID] completion:^(NSDictionary *recipeInfo, NSError *error){
         if(error){
             NSLog(@"Error %@", error.localizedDescription);
@@ -58,10 +58,11 @@
     }];
 }
 
--(void) displayRecipeInfo:(Recipe *) recipe{
+- (void) displayRecipeInfo:(Recipe *) recipe{
     _recipe = recipe;
 
 }
+
 - (IBAction)viewFullRecipeTapped:(id)sender {
     NSURL *url = [[NSURL alloc] initWithString:self.recipeDetails[@"sourceUrl"]];
     [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(bool success){
@@ -80,6 +81,7 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.extendedIngredients.count;
 }
+
 - (IBAction)favoriteButtonTapped:(id)sender {
     //if already favorited then unfavorite
     if([self.recipe[@"favorited"] isEqual:@YES]){
@@ -92,7 +94,7 @@
     [self favoritedOrNot];
 }
 
--(void) favoritedOrNot{
+- (void) favoritedOrNot{
     //based on if the recipe is in favorites or not change the image displayed on the button
     if([self.recipe[@"favorited"] isEqual:@YES]){
         [self.favoriteButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];

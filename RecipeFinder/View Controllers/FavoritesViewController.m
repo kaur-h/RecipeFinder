@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrayOfFavorites;
 @property (nonatomic,strong) UIRefreshControl *refreshControl;
-
 @end
 
 @implementation FavoritesViewController
