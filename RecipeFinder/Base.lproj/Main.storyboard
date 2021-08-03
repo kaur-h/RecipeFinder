@@ -567,6 +567,11 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SZY-Yy-6ws">
+                                        <rect key="frame" x="22" y="247" width="315" height="175"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.73333333329999995" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -620,6 +625,7 @@
                         <outlet property="addButton" destination="RYL-xs-T6U" id="Rzg-qf-pNs"/>
                         <outlet property="autoCompleteTableView" destination="a3T-F1-Pgr" id="pds-zP-0ys"/>
                         <outlet property="backgroundView" destination="sP3-cc-Kb4" id="uoi-m8-D0l"/>
+                        <outlet property="categoryTableView" destination="SZY-Yy-6ws" id="ApE-4y-938"/>
                         <outlet property="categoryTextField" destination="6R9-Nc-CIA" id="lf7-7m-Prg"/>
                         <outlet property="nameTextField" destination="LmC-79-8ZV" id="MuH-we-kfK"/>
                         <outlet property="quantityTextField" destination="Beb-gj-UQi" id="atW-0o-tKh"/>
@@ -1049,7 +1055,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="lcb-hu-4U4"/>
-        <segue reference="E1H-fT-HXh"/>
+        <segue reference="K9t-r1-jCg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
