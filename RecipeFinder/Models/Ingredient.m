@@ -23,13 +23,14 @@
     return @"Ingredient";
 }
 
-+ (void) postIngredient: ( UIImage * _Nullable )image withName: ( NSString * _Nullable )name withQuantity: (NSNumber *) quantity withCompletion: (PFBooleanResultBlock  _Nullable)completion{
++ (void) postIngredient: ( UIImage * _Nullable )image withName: ( NSString * _Nullable )name withQuantity: (NSNumber *) quantity withCategory: (NSString *)category withCompletion: (PFBooleanResultBlock  _Nullable)completion{
     
     Ingredient *newIngredient = [Ingredient new];
     newIngredient.name = name;
     newIngredient.image = [self getPFFileFromImage:image];
     newIngredient.quantity = quantity;
     newIngredient.user = [PFUser currentUser];
+    newIngredient.category = category;
     
     [newIngredient saveInBackgroundWithBlock: completion];
 }

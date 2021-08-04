@@ -36,7 +36,7 @@
     self.nameTextField.delegate = self;
     self.categoryTextField.delegate = self;
     
-    self.ingredientCategories = [[NSArray alloc] initWithObjects:@"Dairy", @"Vegetables", @"Fruits", @"Baking & Grains", @"Spices", @"Meats", @"Seafood", @"Condiments", @"Oils", @"Seasonings", @"Nuts", nil];
+    self.ingredientCategories = [[NSArray alloc] initWithObjects:@"Dairy", @"Vegetables", @"Fruits", @"Baking & Grains", @"Spices", @"Meats", @"Seafood", @"Condiments", @"Oils", @"Seasonings", @"Nuts", @"Other", nil];
     
     //autocomplete ingredient name table view
     self.autoCompleteTableView.delegate = self;
@@ -96,6 +96,7 @@
 - (IBAction)addTapped:(id)sender {
     NSString *name = self.nameTextField.text;
     NSNumber *quantity = [NSNumber numberWithInt:[self.quantityTextField.text intValue]];
+    NSString *category = self.categoryTextField.text;
     
     NSString *baseURLString = @"https://spoonacular.com/cdn/ingredients_100x100/";
     NSString *fullImageURLString = [baseURLString stringByAppendingString:self.ingredientImageName];
@@ -104,7 +105,7 @@
     NSData *data = [NSData dataWithContentsOfURL:fullImageURL];
     UIImage *img = [[UIImage alloc] initWithData:data];
     
-    [Ingredient postIngredient:img withName:name withQuantity:quantity withCompletion:^(BOOL completed, NSError *error){
+    [Ingredient postIngredient:img withName:name withQuantity:quantity withCategory:category withCompletion:^(BOOL completed, NSError *error){
         if(completed){
             NSLog(@"Successfully posted ingredient!");
             [NSNotificationCenter.defaultCenter postNotificationName:@"refreshIngredients" object:nil];

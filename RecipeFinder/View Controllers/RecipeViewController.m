@@ -67,8 +67,9 @@
     for(Ingredient *ingredient in self.userIngredients){
         fullIngredientsList = [[ingredient[@"name"] stringByAppendingString:delimeter] stringByAppendingString:fullIngredientsList];
     }
+    NSLog(@"%@", fullIngredientsList);
     fullIngredientsList = [fullIngredientsList substringToIndex:fullIngredientsList.length - 3];
-
+    
     //Making an API call to get the recipes
     [[APIManager shared] getRecipesBasedOnIngredients:fullIngredientsList completion:^(NSDictionary *recipes, NSError *error){
         if(error){
@@ -169,7 +170,7 @@
     return false;
 }
 
-- (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
+- (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView{
     return 1;
 }
 

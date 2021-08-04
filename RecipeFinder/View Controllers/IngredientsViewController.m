@@ -11,12 +11,15 @@
 #import "Parse/Parse.h"
 #import "RecipeViewController.h"
 
-@interface IngredientsViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
+@interface IngredientsViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrayOfIngredients;
 @property (weak, nonatomic) IBOutlet UIButton *addIngredientButton;
 @property (nonatomic,strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIButton *viewRecipesButton;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (strong, nonatomic) NSArray *pickerData;
+@property (nonatomic, strong) NSArray *selectedIngredients;
 @end
 
 @implementation IngredientsViewController
@@ -27,11 +30,15 @@
     // Setting data source & delegate for table source
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.pickerView.delegate = self;
+    self.pickerView.dataSource = self;
     
     [self fetchIngredients];
     
     self.addIngredientButton.layer.cornerRadius = 4;
     self.viewRecipesButton.layer.cornerRadius = 4;
+    
+    self.pickerData = [[NSArray alloc] initWithObjects:@"All Ingredients", @"Dairy", @"Vegetables", @"Fruits", @"Baking & Grains", @"Spices", @"Meats", @"Seafood", @"Condiments", @"Oils", @"Seasonings", @"Nuts", @"Other", nil];
     
     //Refresh Control
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -58,11 +65,13 @@
     // fetch data asynchronously
     [ingredientQuery findObjectsInBackgroundWithBlock:^(NSArray<Ingredient *> * _Nullable ingredients, NSError * _Nullable error) {
         if (ingredients) {
-            // do something with the data fetched
+            //find all ingredients that the user has
             NSLog(@"Successfully loaded home feed");
             self.arrayOfIngredients = ingredients;
+            self.selectedIngredients = ingredients;
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
+            [self.pickerView selectRow:0 inComponent:0 animated:true];
         }
         else {
             // handle error
@@ -72,12 +81,12 @@
 }
 
 - (NSInteger) tableView: (UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.arrayOfIngredients.count;
+    return self.selectedIngredients.count;
 }
 
 - (UITableViewCell *) tableView: (UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     IngredientCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IngredientCell"];
-    Ingredient *ingredient = self.arrayOfIngredients[indexPath.row];
+    Ingredient *ingredient = self.selectedIngredients[indexPath.row];
     [cell setIngredient:ingredient];
     return cell;
 }
@@ -110,6 +119,61 @@
                     [self fetchIngredients];
                 }
             }];
+    }];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView{
+    return 1;
+}
+
+- (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.pickerData.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return self.pickerData[row];
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* pickerLabel = (UILabel*)view;
+    if (!pickerLabel){
+        pickerLabel = [[UILabel alloc] init];
+        pickerLabel.font = [UIFont fontWithName:@"Didot" size:20];
+        pickerLabel.textAlignment=NSTextAlignmentCenter;
+    }
+    [pickerLabel setText:[self.pickerData objectAtIndex:row]];
+    return pickerLabel;
+}
+
+- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    //makes a query based on what category of ingredients the user wants to view
+    [self getCategoriedIngredients:self.pickerData[row]];
+    [self.tableView reloadData];
+}
+
+- (void) getCategoriedIngredients: (NSString *) category{
+    //if the user wants to see all ingredients then do not need to make an extra query
+    if([category isEqual:@"All Ingredients"]){
+        self.selectedIngredients = self.arrayOfIngredients;
+        [self.tableView reloadData];
+        return;
+    }
+    // construct query
+    PFQuery *ingredientQuery = [Ingredient query];
+    [ingredientQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [ingredientQuery whereKey:@"category" equalTo:category];
+    
+    // fetch data asynchronously
+    [ingredientQuery findObjectsInBackgroundWithBlock:^(NSArray<Ingredient *> * _Nullable ingredients, NSError * _Nullable error) {
+        if (ingredients) {
+            //set the data to display to the result of the query
+            self.selectedIngredients = ingredients;
+            [self.tableView reloadData];
+        }
+        else {
+            // handle error
+            NSLog(@"%@", error.localizedDescription);
+        }
     }];
 }
 

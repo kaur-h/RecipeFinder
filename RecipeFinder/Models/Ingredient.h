@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *createdAtString;
 @property (nonatomic, strong) PFUser *user;
 
-+ (void) postIngredient: ( UIImage * _Nullable )image withName: ( NSString * _Nullable )name withQuantity: (NSNumber *) quantity withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++(void) postIngredient: ( UIImage * _Nullable )image withName: ( NSString * _Nullable )name withQuantity: (NSNumber *) quantity withCategory: (NSString *)category withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

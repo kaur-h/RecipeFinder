@@ -117,7 +117,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n8V-hU-xbB">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
+                                <rect key="frame" x="0.0" y="39" width="414" height="645"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" rowHeight="60" id="Q8E-AQ-kdZ" customClass="IngredientCell">
@@ -205,23 +205,35 @@
                                     <segue destination="Q4V-YG-B5v" kind="presentation" id="Cgq-01-z2Q"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf9-xP-SZg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="bWU-OG-4EK"/>
+                                    <constraint firstAttribute="width" constant="414" id="xEJ-Kt-m65"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SCI-6K-Plk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4ZJ-Yk-wrh" firstAttribute="leading" secondItem="SCI-6K-Plk" secondAttribute="leading" constant="20" id="0Gf-5Z-h34"/>
+                            <constraint firstItem="SCI-6K-Plk" firstAttribute="bottom" secondItem="Gf9-xP-SZg" secondAttribute="bottom" constant="677" id="27B-xA-nVC"/>
                             <constraint firstItem="n8V-hU-xbB" firstAttribute="trailing" secondItem="SCI-6K-Plk" secondAttribute="trailing" id="Epb-wM-PWO"/>
+                            <constraint firstItem="Gf9-xP-SZg" firstAttribute="trailing" secondItem="SCI-6K-Plk" secondAttribute="trailing" id="FRM-vF-mEP"/>
+                            <constraint firstItem="Gf9-xP-SZg" firstAttribute="top" secondItem="Vdu-YY-2cg" secondAttribute="top" id="HQG-g8-GiI"/>
                             <constraint firstItem="by7-oj-0eI" firstAttribute="bottom" secondItem="SCI-6K-Plk" secondAttribute="bottom" id="Ts5-fi-JBx"/>
-                            <constraint firstItem="4ZJ-Yk-wrh" firstAttribute="top" secondItem="n8V-hU-xbB" secondAttribute="bottom" constant="7" id="Wr8-25-Ev2"/>
+                            <constraint firstItem="4ZJ-Yk-wrh" firstAttribute="top" secondItem="n8V-hU-xbB" secondAttribute="bottom" id="Wr8-25-Ev2"/>
+                            <constraint firstItem="Gf9-xP-SZg" firstAttribute="leading" secondItem="SCI-6K-Plk" secondAttribute="leading" id="dcE-ro-UnG"/>
                             <constraint firstItem="SCI-6K-Plk" firstAttribute="trailing" secondItem="by7-oj-0eI" secondAttribute="trailing" constant="20" id="jrg-8T-B4v"/>
                             <constraint firstItem="4ZJ-Yk-wrh" firstAttribute="bottom" secondItem="SCI-6K-Plk" secondAttribute="bottom" id="qy7-zj-L6G"/>
                             <constraint firstItem="n8V-hU-xbB" firstAttribute="leading" secondItem="SCI-6K-Plk" secondAttribute="leading" id="ySL-Ti-WqF"/>
-                            <constraint firstItem="n8V-hU-xbB" firstAttribute="top" secondItem="SCI-6K-Plk" secondAttribute="top" id="yv2-jB-Fg8"/>
+                            <constraint firstItem="n8V-hU-xbB" firstAttribute="top" secondItem="SCI-6K-Plk" secondAttribute="top" constant="39" id="yv2-jB-Fg8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ingredients" id="nt2-iL-VxC"/>
                     <connections>
                         <outlet property="addIngredientButton" destination="4ZJ-Yk-wrh" id="KgW-6k-8a0"/>
+                        <outlet property="pickerView" destination="Gf9-xP-SZg" id="Gzl-lA-yC0"/>
                         <outlet property="tableView" destination="n8V-hU-xbB" id="We6-CK-fqX"/>
                         <outlet property="viewRecipesButton" destination="by7-oj-0eI" id="k1I-5J-RCR"/>
                     </connections>
@@ -752,12 +764,6 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUP-QU-Nb9">
-                                <rect key="frame" x="214.5" y="510" width="81.5" height="25"/>
-                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="20"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EwA-I7-7HP">
                                 <rect key="frame" x="129" y="194" width="167" height="157"/>
                                 <color key="backgroundColor" red="0.73333333329999995" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -770,6 +776,12 @@
                                     <outletCollection property="gestureRecognizers" destination="RFO-r7-cgs" appends="YES" id="Rqe-Aa-kfG"/>
                                 </connections>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUP-QU-Nb9">
+                                <rect key="frame" x="194" y="508" width="81.5" height="25"/>
+                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="20"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="neA-pB-teg"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -784,14 +796,14 @@
                             <constraint firstItem="neA-pB-teg" firstAttribute="trailing" secondItem="EwA-I7-7HP" secondAttribute="trailing" constant="118" id="K8A-Ms-d9d"/>
                             <constraint firstItem="sXK-0t-Tsj" firstAttribute="top" secondItem="neA-pB-teg" secondAttribute="top" constant="362" id="Kc9-uT-jKu"/>
                             <constraint firstItem="EwA-I7-7HP" firstAttribute="top" secondItem="neA-pB-teg" secondAttribute="top" constant="106" id="QLZ-DB-7qk"/>
-                            <constraint firstItem="neA-pB-teg" firstAttribute="trailing" secondItem="hUP-QU-Nb9" secondAttribute="trailing" constant="118" id="QbE-Z5-Diz"/>
-                            <constraint firstItem="neA-pB-teg" firstAttribute="bottom" secondItem="hUP-QU-Nb9" secondAttribute="bottom" constant="278" id="Z6w-CC-Ap9"/>
+                            <constraint firstItem="neA-pB-teg" firstAttribute="trailing" secondItem="hUP-QU-Nb9" secondAttribute="trailing" constant="138.5" id="QbE-Z5-Diz"/>
+                            <constraint firstItem="neA-pB-teg" firstAttribute="bottom" secondItem="hUP-QU-Nb9" secondAttribute="bottom" constant="280" id="Z6w-CC-Ap9"/>
                             <constraint firstItem="neA-pB-teg" firstAttribute="trailing" secondItem="01t-0D-sjj" secondAttribute="trailing" constant="118" id="hby-zR-Lhc"/>
                             <constraint firstItem="EwA-I7-7HP" firstAttribute="leading" secondItem="neA-pB-teg" secondAttribute="leading" constant="129" id="moS-fc-2V6"/>
                             <constraint firstItem="neA-pB-teg" firstAttribute="bottom" secondItem="9Ed-C0-aOm" secondAttribute="bottom" constant="281" id="qAa-F0-DNM"/>
-                            <constraint firstItem="hUP-QU-Nb9" firstAttribute="top" secondItem="01t-0D-sjj" secondAttribute="bottom" constant="41" id="qtJ-ZB-TcX"/>
+                            <constraint firstItem="hUP-QU-Nb9" firstAttribute="top" secondItem="01t-0D-sjj" secondAttribute="bottom" constant="39" id="qtJ-ZB-TcX"/>
                             <constraint firstItem="01t-0D-sjj" firstAttribute="leading" secondItem="sXK-0t-Tsj" secondAttribute="trailing" constant="62" id="rcZ-4n-Uh8"/>
-                            <constraint firstItem="hUP-QU-Nb9" firstAttribute="leading" secondItem="9Ed-C0-aOm" secondAttribute="trailing" constant="84.5" id="vsZ-Oi-k2A"/>
+                            <constraint firstItem="hUP-QU-Nb9" firstAttribute="leading" secondItem="9Ed-C0-aOm" secondAttribute="trailing" constant="64" id="vsZ-Oi-k2A"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="muE-7V-30B">
